@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      {% include "includes/sidebar.html" %}</div>
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+  text: "Back to all applications",
+  href: "manage-applications"
+}) }}
+      <h1 class="govuk-heading-xl">
+        Application 1
+
+      </h1>
+
+    </div>
+  </div>
+{% endblock %}

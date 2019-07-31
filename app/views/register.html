@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    {% include "includes/sidebar.html" %}
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Register Application
+
+      </h1>
+      {{ govukInput({
+        label: {
+          text: "Application name"
+        },
+        id: "event-name",
+        name: "event-name"
+      }) }}
+      {{ govukCheckboxes({
+  idPrefix: "waste",
+  name: "waste",
+  fieldset: {
+    legend: {
+      text: "Environment keys"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "test",
+      text: "Test"
+    },
+    {
+      value: "live",
+      text: "Live"
+    },
+    {
+      value: "future",
+      text: "Future"
+    }
+  ]
+}) }}
+
+      {{ govukRadios({
+  idPrefix: "where-do-you-live",
+  name: "where-do-you-live",
+  fieldset: {
+    legend: {
+      text: "Type of API key?"
+    }
+  },
+  items: [
+    {
+      value: "rest",
+      text: "REST API Key"
+    },
+    {
+      value: "streaming",
+      text: "Streaming API Key"
+    }
+  ]
+}) }}
+
+      {{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+  label: {
+    text: "Restricted IPs"
+  },
+  hint: {
+    text: "Up to five IP addresses, for each one place on a new line."
+  }
+}) }}
+
+      {{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+  label: {
+    text: "Authorised JavaScript domains"
+  },
+  hint: {
+    text: "Up to five URIs, for each one place on a new line."
+  }
+}) }}
+      {{ govukButton({
+  text: "Register",
+  classes: "govuk-!-margin-right-1"
+}) }}
+
+      {{ govukButton({
+  text: "Cancel",
+  classes: "govuk-button--secondary",
+  href: "manage-applications"
+}) }}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,459 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-navigation";
+@import "patterns/task-list";
+@import "patterns/related-items";
+
+// Components that aren't in Frontend
+@import "components/cookie-banner";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+/* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav {
+  font-family: 'proxima_nova', Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.14286;
+  margin: 0;
+  position: relative;
+  z-index: 60;
+}
+@media (min-width: 641px) {
+  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+@media (max-width: 640px) {
+  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav {
+    margin: 0 -15px 1em;
+  }
+}
+@media (min-width: 641px) {
+  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav {
+    margin: 0;
+  }
+}
+@media (min-width: 769px) {
+  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav {
+    text-align: right;
+  }
+}
+/* line 42, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .inner {
+  padding: 0;
+}
+@media (min-width: 769px) {
+  /* line 42, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav .inner {
+    padding: 0 30px;
+  }
+}
+@media (min-width: 641px) {
+  /* line 42, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav .inner {
+    padding-bottom: 0;
+  }
+}
+/* line 54, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .js-header-toggle,
+#global-nav .sign-in {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #dee0e2;
+  padding: 1em;
+}
+@media (min-width: 641px) {
+  /* line 54, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav .js-header-toggle,
+  #global-nav .sign-in {
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  /* line 54, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav .js-header-toggle,
+  #global-nav .sign-in {
+    display: none;
+  }
+}
+/* line 70, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .js-header-toggle:focus,
+#global-nav .js-header-toggle:hover,
+#global-nav .sign-in:focus,
+#global-nav .sign-in:hover {
+  text-decoration: underline;
+}
+/* line 76, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .home a {
+  display: block;
+  float: left;
+  padding-left: 0;
+}
+/* line 81, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .jump-link {
+  float: right;
+}
+@media (min-width: 769px) {
+  /* line 81, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav .jump-link {
+    position: absolute;
+    left: -99999em;
+  }
+}
+/* line 91, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .js-header-toggle:focus {
+  outline: none;
+}
+/* line 94, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .js-header-toggle:after {
+  display: inline-block;
+  font-size: 8px;
+  height: 8px;
+  padding-left: 5px;
+  vertical-align: middle;
+  content: ' \25BC';
+}
+/* line 105, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav.open .js-header-toggle:after {
+  content: ' \25B2';
+}
+/* line 111, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav nav {
+  clear: both;
+  /* sort top border whenbeta turns off
+
+      @include govuk-header-bar();
+
+      */
+  border-bottom: 1px solid #bfc1c3;
+}
+@media (min-width: 769px) {
+  /* line 111, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav {
+    padding: 10px 0;
+  }
+}
+@media (min-width: 769px) {
+  /* line 111, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav {
+    clear: none;
+    background: transparent;
+    position: static;
+    margin-bottom: 0;
+  }
+}
+/* line 131, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav nav #navigation {
+  margin: 0;
+  padding: 0 0 1em;
+}
+@media (min-width: 641px) {
+  /* line 131, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav #navigation {
+    padding: 10px 0;
+  }
+}
+@media (min-width: 769px) {
+  /* line 131, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav #navigation {
+    padding: 0;
+  }
+}
+/* line 145, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav nav .current {
+  color: #fff;
+}
+/* line 148, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav nav a {
+  text-decoration: underline;
+}
+/* line 151, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav nav li {
+  padding: 10px 0 10px 16px;
+  margin-bottom: 0;
+  display: block;
+  position: relative;
+}
+@media (max-width: 640px) {
+  /* line 151, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav li {
+    padding: 1em 1em 0;
+  }
+}
+@media (min-width: 641px) {
+  /* line 151, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav li {
+    display: inline;
+  }
+}
+@media (max-width: 640px) {
+  /* line 163, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav li.user {
+    display: none;
+  }
+}
+@media (min-width: 641px) {
+  /* line 163, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav li.user {
+    padding-left: 0;
+  }
+}
+@media (min-width: 641px) {
+  /* line 171, ../../../app/assets/stylesheets/views/global-nav.scss */
+  #global-nav nav li.unauthenticated {
+    padding-left: 0;
+  }
+}
+/* line 180, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .home a {
+  position: relative;
+}
+/* line 182, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .home a small {
+  position: absolute;
+  top: .8em;
+  text-transform: uppercase;
+  color: white;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background-color: #dee0e2;
+  padding: 2px 5px 0;
+  margin-left: 10px;
+}
+/* line 193, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .home a small.alpha {
+  background-color: #d53880;
+}
+/* line 197, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-nav .home a small.beta {
+  background-color: #f47738;
+}
+
+/* line 204, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-header form#search input.submit {
+  cursor: pointer;
+}
+
+/* line 207, ../../../app/assets/stylesheets/views/global-nav.scss */
+#global-header .search-toggle {
+  margin-top: 5px;
+  width: 34px;
+}
+
+.api-value {
+  font-size: 12px;
+  color: #007f80;
+  font-weight: bold;
+}
+
+.app-subnav {
+  padding: 0 15px 0 0;
+  font-family: 'nta',Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: .875rem;
+  line-height: 1.14286;
+}
+
+@media print {
+  .app-subnav {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-subnav {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+  .app-subnav {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-subnav {
+    margin-left: -15px;
+  }
+}
+
+.app-subnav__section {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.app-subnav__link {
+  display: block;
+  padding: 8px 30px 8px 10px;
+  border-left: 4px solid transparent;
+  text-decoration: none;
+}
+
+.app-subnav__link:focus {
+  background: inherit;
+}
+
+.app-subnav__link:active,
+.app-subnav__link:hover,
+.app-subnav__link:visited {
+  color: #005ea5;
+}
+
+.app-subnav__link:hover {
+  border-left-color: #2b8cc4;
+}
+
+.app-subnav__section-item--current .app-subnav__link {
+  border-left-color: #005ea5;
+  background: #f8f8f8;
+  font-weight: bold;
+}
+
+.app-subnav__section--nested {
+  margin-bottom: 0;
+}
+
+.app-subnav__section--nested .app-subnav__link {
+  padding-left: 20px;
+  font-weight: 400;
+}
+
+.app-subnav__theme {
+  margin: 0;
+  padding: 10px 15px;
+  color: #6f777b;
+  font-family: 'nta',Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+@media print {
+  .app-subnav__theme {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-subnav__theme {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .app-subnav__theme {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+.govuk-header {
+  border-bottom: 10px solid rgb(0, 94, 165);
+}
+
+.govuk-header__container {
+  border-bottom: 0;
+  padding-bottom: 7px;
+}
+
+@media (max-width: 40.0525em) {
+  .app-hide-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-hide-tablet {
+    display: none;
+  }
+}
+
+@media (min-width: 48.0625em) {
+  .app-hide-desktop {
+    display: none;
+  }
+}
+
+.app-header-mobile-nav-toggler-wrapper {
+  display: block;
+  float: right;
+}
+
+.app-header-mobile-nav-toggler {
+  display: none;
+  min-height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-right: 0;
+  padding-left: 0;
+  border: 1px solid transparent;
+  background-color: #0b0c0c;
+  -webkit-box-shadow: 0 0 0 #0b0c0c;
+  box-shadow: 0 0 0 #0b0c0c;
+}
+
+.app-header-mobile-nav-toggler:active,
+.app-header-mobile-nav-toggler:focus,
+.app-header-mobile-nav-toggler:hover {
+  background-color: #0b0c0c;
+  -webkit-box-shadow: 0 0 0 #0b0c0c;
+  box-shadow: 0 0 0 #0b0c0c;
+}
+
+.app-header-mobile-nav-toggler::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  border-width: 8.66px 5px 0 5px;
+  border-top-color: inherit;
+  content: '';
+  margin-left: 5px;
+  border-color: #fff;
+}
+
+.app-header-mobile-nav-toggler--active.app-header-mobile-nav-toggler::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  border-width: 0 5px 8.66px 5px;
+  border-bottom-color: inherit;
+  border-color: #fff;
+}
+
+@media (max-width: 40.0525em) {
+  .js-enabled .app-header-mobile-nav-toggler {
+    display: inline;
+  }
+}
