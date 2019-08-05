@@ -25,7 +25,7 @@
             Application type
           </dt>
           <dd class="govuk-summary-list__value">
-            REST API Key
+            {{ case.apis.type }}
           </dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
@@ -34,7 +34,8 @@
             Test API key
           </dt>
           <dd class="govuk-summary-list__value">
-            <span class='api-value'>Ow20FGU85E32mqehUptFKvnL048gJKTD8aNFz19D</span>
+            <span class='api-value'>
+              {{ case.apis.test }}</span>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -48,7 +49,7 @@
             Live API key
           </dt>
           <dd class="govuk-summary-list__value">
-            <span class='api-value'>Ow20FGU85E32mqehUptFKvnL048gJKTD8aNFz19D</span>
+            <span class='api-value'>{{ case.apis.live }}</span>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">
@@ -62,7 +63,7 @@
             Future API key
           </dt>
           <dd class="govuk-summary-list__value">
-            <span class='api-value'>Ow20FGU85E32mqehUptFKvnL048gJKTD8aNFz19D</span>
+            <span class='api-value'>{{ case.apis.future }}</span>
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="#">

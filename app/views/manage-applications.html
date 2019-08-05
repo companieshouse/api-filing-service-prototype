@@ -24,13 +24,13 @@
               <th scope="row" class="govuk-table__header">
                 <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
               </th>
-              <td class="govuk-table__cell">{{ case.created }}</td>
+              <td class="govuk-table__cell">{{ case.appcreated }}</td>
             </tr>
           {% endfor %}
         </tbody>
       </table>
       {{ govukButton({
-      text: "Register new application",
+      text: "New application",
       href: "register"
       }) }}
     </div>
