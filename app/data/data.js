@@ -12,6 +12,7 @@ module.exports = [
   {
     id: 1,
     app: 'Application 2',
+    created: '30 July 2019',
     test: '000000000',
     live: '111111111',
     future: '22222222',
@@ -21,6 +22,7 @@ module.exports = [
   {
     id: 2,
     app: 'Application 3',
+    created: '30 July 2019',
     test: '000000000',
     live: '111111111',
     future: '22222222',
@@ -30,6 +32,7 @@ module.exports = [
   {
     id: 3,
     app: 'Application 4',
+    created: '30 July 2019',
     test: '000000000',
     live: '111111111',
     future: '22222222',

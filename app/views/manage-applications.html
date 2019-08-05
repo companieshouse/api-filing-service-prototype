@@ -1,19 +1,16 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Manage Applications
 {% endblock %}
 
 {% block content %}
-
   <div class="govuk-grid-row">
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
         Manage Applications
-
       </h1>
-
       <table class="govuk-table">
         <tbody class="govuk-table__body">
           <thead class="govuk-table__head">
@@ -32,12 +29,10 @@
           {% endfor %}
         </tbody>
       </table>
-
       {{ govukButton({
-text: "Register new application",
-href: "register"
-}) }}
-
+      text: "Register new application",
+      href: "register"
+      }) }}
     </div>
   </div>
 {% endblock %}
