@@ -11,6 +11,11 @@
       <h1 class="govuk-heading-xl">
         Manage Applications
       </h1>
+      {{ govukButton({
+      text: "Add an application",
+      href: "register"
+      }) }}
+      <h2 class="govuk-heading-l">Test Applications</h2>
       <table class="govuk-table">
         <tbody class="govuk-table__body">
           <thead class="govuk-table__head">
@@ -29,10 +34,45 @@
           {% endfor %}
         </tbody>
       </table>
-      {{ govukButton({
-      text: "New application",
-      href: "register"
-      }) }}
+      <h2 class="govuk-heading-l">Live Applications</h2>
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Application name</th>
+              <th scope="col" class="govuk-table__header">Created date</th>
+            </tr>
+          </thead>
+          {% for case in cases %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">
+                <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
+              </th>
+              <td class="govuk-table__cell">{{ case.appcreated }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <h2 class="govuk-heading-l">Future Applications</h2>
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Application name</th>
+              <th scope="col" class="govuk-table__header">Created date</th>
+            </tr>
+          </thead>
+          {% for case in cases %}
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">
+                <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
+              </th>
+              <td class="govuk-table__cell">{{ case.appcreated }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
     </div>
   </div>
 {% endblock %}
