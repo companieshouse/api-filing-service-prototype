@@ -1,24 +1,33 @@
-{% extends "layout.html" %}
+{% extends "layout-alt.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Sign in to Companies House
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
-    {% include "includes/sidebar.html" %}
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        Companies House API
-      </h1>
-      <h2 class="govuk-heading-m">Beta release</h2>
-      <p>The Companies House API and Developer Hub are currently at a
-        <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle">beta release</a>. We are going through a process of user engagement to improve the API and documentation.</p>
-      <p>We have a proposed approach to versioning the API and documentation that is currently being
-        <a href="http://forum.aws.chdev.org/t/versioning-the-companies-house-api/248">discussed in the Developer Hub Forum</a>. In the meantime existing resources will remain 'as is' and can be considered as at 'version 0'.</p>
-      <p>Please refer to the
-        <a href="http://forum.aws.chdev.org/">Developer Hub Forum</a>
-        for ongoing feature and documentation discussions, and announcements on upcoming feature releases.</p>
+    <div class="govuk-grid-column-one-half">
+      <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
+      {{ govukInput({
+  label: {
+    text: "Username",
+    classes: "govuk-\!-font-weight-bold"
+  },
+  id: "username",
+  name: "username"
+}) }}
+      {{ govukInput({
+  label: {
+    text: "Password",
+    classes: "govuk-\!-font-weight-bold"
+  },
+  id: "password",
+  name: "password"
+}) }}
+      {{ govukButton({
+  text: "Sign in",
+  href: 'manage-applications.html'
+}) }}
     </div>
   </div>
 {% endblock %}

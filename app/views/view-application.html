@@ -31,16 +31,11 @@
         </div>
       </dl>
       {{ govukButton({
-text: "Edit application",
+text: "Manage application",
 classes: "govuk-!-margin-right-1",
 href: "edit"
 }) }}
 
-      {{ govukButton({
-text: "Delete application",
-classes: "govuk-button--secondary",
-href: "manage-applications"
-}) }}
       <h2 class="govuk-heading-l">Keys for this application</h2>
       <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
         <div class="govuk-summary-list__row">
@@ -114,22 +109,16 @@ href: "manage-applications"
       </dl>
 
       {{ govukButton({
-text: "Edit key",
+text: "Manage key",
 classes: "govuk-!-margin-right-1",
-href: "edit"
+href: "manage-key"
 }) }}
 
-      {{ govukButton({
-text: "Delete key",
-classes: "govuk-button--secondary",
-href: "manage-applications"
-}) }}
       <hr/>
-      {{ govukButton({
-text: "Add new key",
-classes: "govuk-!-margin-top-6",
-href: ""
-}) }}
+      <div class="govuk-!-margin-top-6">
+        <a href="#" class=" govuk-body govuk-!-font-size-20">Add new key</a>
+      </div>
+
     </div>
   </div>
 {% endblock %}
