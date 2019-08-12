@@ -25,12 +25,15 @@
             </tr>
           </thead>
           {% for case in cases %}
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">
-                <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
-              </th>
-              <td class="govuk-table__cell">{{ case.appcreated }}</td>
-            </tr>
+            {% if case.status === 'test' %}
+
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">
+                  <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
+                </th>
+                <td class="govuk-table__cell">{{ case.appcreated }}</td>
+              </tr>
+            {% endif %}
           {% endfor %}
         </tbody>
       </table>
@@ -44,12 +47,14 @@
             </tr>
           </thead>
           {% for case in cases %}
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">
-                <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
-              </th>
-              <td class="govuk-table__cell">{{ case.appcreated }}</td>
-            </tr>
+            {% if case.status === 'live' %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">
+                  <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
+                </th>
+                <td class="govuk-table__cell">{{ case.appcreated }}</td>
+              </tr>
+            {% endif %}
           {% endfor %}
         </tbody>
       </table>
@@ -63,12 +68,14 @@
             </tr>
           </thead>
           {% for case in cases %}
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">
-                <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
-              </th>
-              <td class="govuk-table__cell">{{ case.appcreated }}</td>
-            </tr>
+            {% if case.status === 'future' %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">
+                  <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
+                </th>
+                <td class="govuk-table__cell">{{ case.appcreated }}</td>
+              </tr>
+            {% endif %}
           {% endfor %}
         </tbody>
       </table>
