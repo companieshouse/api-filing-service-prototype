@@ -1,79 +1,19 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  View Application
+  Register Application
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
-
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
-      {{ govukBackLink({
-  text: "Back to all applications",
-  href: "manage-applications"
-}) }}
       <h1 class="govuk-heading-xl">
-        {{ case.app }}
+        Delete API client key
 
       </h1>
-      <h2 class="govuk-heading-l">Manage application</h2>
-      <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Application environment
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.status }}
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Restricted IPs
-          </dt>
-          <dd class="govuk-summary-list__value">
-            194.75.36.81
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            JavaScript domains
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Redirect URIs
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Privacy Policy URL
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Terms & Conditions URL
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-      </dl>
-      {{ govukButton({
-text: "Manage application",
-classes: "govuk-!-margin-right-1",
-href: "edit"
-}) }}
 
-      <h2 class="govuk-heading-l">Keys for this application</h2>
       <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -147,15 +87,9 @@ href: "edit"
       </dl>
 
       {{ govukButton({
-text: "Delete key",
-classes: "govuk-!-margin-right-1",
-href: "delete-key"
-}) }}
-
-      <hr/>
-      <div class="govuk-!-margin-top-6">
-        <a href="add-new-key.html" class=" govuk-body govuk-!-font-size-20">Add new key</a>
-      </div>
+        text: "Delete key",
+        classes: "govuk-button--warning"
+      }) }}
 
     </div>
   </div>
