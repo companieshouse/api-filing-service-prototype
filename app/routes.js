@@ -21,16 +21,16 @@ router.all('*', function (req, res, next) {
   next()
 })
 
-router.get('/manage-applications', function (req, res) {
+router.get('/verison-1/manage-applications', function (req, res) {
   console.log(req.session.cases)
   console.log('1')
 
-  res.render('manage-applications', {
+  res.render('verison-1/manage-applications', {
     cases: req.session.cases
   })
 })
 
-router.get('/view-application', function (req, res) {
+router.get('/verison-1/view-application', function (req, res) {
   var id = parseInt(req.query.id)
   var i = 0
 
@@ -40,14 +40,45 @@ router.get('/view-application', function (req, res) {
     }
   };
   console.log(req.session.workingCase)
-  res.render('view-application', {
+  res.render('verison-1/view-application', {
     case: req.session.cases[id]
 
   })
 })
 
-router.get('/register', function (req, res) {
-  res.render('register', {
+router.get('/verison-1/register', function (req, res) {
+  res.render('verison-1/register', {
+
+  })
+})
+
+router.get('/verison-2/manage-applications', function (req, res) {
+  console.log(req.session.cases)
+  console.log('1')
+
+  res.render('verison-2/manage-applications', {
+    cases: req.session.cases
+  })
+})
+
+router.get('/verison-2/view-application', function (req, res) {
+  var id = parseInt(req.query.id)
+  var i = 0
+
+  for (i = 0; i < req.session.cases.length; i++) {
+    if (req.session.cases[i].id === id) {
+      req.session.workingCase = req.session.cases[i]
+    }
+  };
+  console.log(req.session.workingCase)
+  res.render('verison-2/view-application', {
+    case: req.session.cases[id]
+
+  })
+})
+
+router.get('/verison-2/register', function (req, res) {
+  res.render('verison-2/register', {
 
   })
 })
