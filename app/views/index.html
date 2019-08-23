@@ -7,26 +7,16 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
-      {{ govukInput({
-  label: {
-    text: "Username",
-    classes: "govuk-\!-font-weight-bold"
-  },
-  id: "username",
-  name: "username"
-}) }}
-      {{ govukInput({
-  label: {
-    text: "Password",
-    classes: "govuk-\!-font-weight-bold"
-  },
-  id: "password",
-  name: "password"
-}) }}
+      <h1 class="govuk-heading-xl">Developer Hub Prototype</h1>
       {{ govukButton({
-  text: "Sign in",
-  href: 'manage-applications.html'
+  text: "Verison 1",
+  href: "verison-1/sign-in.html",
+  classes: "govuk-!-margin-right-1"
+}) }}
+
+      {{ govukButton({
+  text: "Verison 2",
+  href: "verison-2/sign-in.html"
 }) }}
     </div>
   </div>

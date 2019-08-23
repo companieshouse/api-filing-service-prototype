@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Register Application
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    {% include "includes/sidebar.html" %}
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        New Application
+
+      </h1>
+      {{ govukInput({
+        label: {
+          text: "Application name"
+        },
+        id: "event-name",
+        name: "event-name"
+      }) }}
+      {{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+  label: {
+    text: "Description of application"
+  },
+  hint: {
+    text: "This may be shown to the public"
+  }
+}) }}
+
+      {{ govukRadios({
+idPrefix: "environment",
+name: "environment",
+fieldset: {
+legend: {
+text: "Choose an environment for your application"
+}
+},
+items: [
+{
+value: "test",
+text: "Test"
+},
+{
+value: "live",
+text: "Live"
+},
+{
+value: "future",
+text: "Future"
+}
+]
+}) }}
+      {{ govukInput({
+  label: {
+    text: "Privacy Policy URL"
+  },
+  id: "event-name",
+  name: "event-name"
+}) }}
+      {{ govukInput({
+label: {
+text: "Terms & Conditions URL"
+},
+id: "event-name",
+name: "event-name"
+}) }}
+      {% set emailHtml %}
+      {{ govukInput({
+  id: "contact-by-email",
+  name: "contact-by-email",
+  type: "email",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Company number"
+  },
+  attributes: {
+    spellcheck: "false"
+  }
+}) }}
+      {% endset -%}
+
+      {% set phoneHtml %}
+      {{ govukInput({
+  id: "contact-by-phone",
+  name: "contact-by-phone",
+  type: "tel",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Phone number"
+  }
+}) }}
+      {% endset -%}
+
+      {% set textHtml %}
+      <p>We will take your user ID as the ownership of this application
+        {% endset -%}
+
+        {{ govukRadios({
+  idPrefix: "how-contacted-conditional",
+  name: "how-contacted",
+  fieldset: {
+    legend: {
+      text: "Are you creating this application on behalf of your company?"
+    }
+  },
+  hint: {
+    text: "Select one option."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes",
+      conditional: {
+        html: emailHtml
+      }
+    },
+    {
+      value: "no",
+      text: "No",
+      conditional: {
+        html: textHtml
+      }
+    }
+  ]
+}) }}
+        {{ govukButton({
+  text: "Create",
+  classes: "govuk-!-margin-right-1"
+}) }}
+
+        {{ govukButton({
+  text: "Cancel",
+  classes: "govuk-button--secondary",
+  href: "manage-applications"
+}) }}
+      </div>
+    </div>
+  {% endblock %}
