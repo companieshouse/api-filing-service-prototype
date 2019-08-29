@@ -153,17 +153,18 @@ href: "edit"
         </div>
       </dl>
 
-      <a href="delete-key.html" class=" govuk-body govuk-!-font-size-20">Delete key</a>
+      {{ govukButton({
+text: "Delete key",
+classes: "govuk-!-margin-right-1",
+href: "delete-key"
+}) }}
 
       <hr/>
       <div class="govuk-!-margin-top-6">
-        {{ govukButton({
-  text: "Add new key",
-  classes: "govuk-!-margin-right-1",
-  href: "add-new-key"
-  }) }}
+        <a href="add-new-key.html" class=" govuk-body govuk-!-font-size-20">Add new key</a>
       </div>
-
     </div>
+
   </div>
+</div>
 {% endblock %}
