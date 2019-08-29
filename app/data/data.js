@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 0,
     app: 'My test application',
-    status: 'test',
+    status: 'Test',
     appcreated: '22 July 2018',
     apis: {
       type: 'Rest API key',
@@ -12,12 +12,13 @@ module.exports = [
       future: '19adffb4-ebc0-4134-9f85-40f48068f122'
     },
     ip: '194.75.36.81',
-    javascript: ''
+    javascript: '',
+    keyname: 'REST API Key for testing'
   },
   {
     id: 1,
     app: 'Live service',
-    status: 'live',
+    status: 'Live',
     appcreated: '12 January 2016',
     apis: {
       type: 'Rest API key',
@@ -27,12 +28,13 @@ module.exports = [
       future: '2ab8fe3f-680b-4ea3-b707-4d8978e5d62d'
     },
     ip: '194.75.36.81',
-    javascript: ''
+    javascript: '',
+    keyname: 'Live API Key for my application'
   },
   {
     id: 2,
     app: 'Future testing',
-    status: 'future',
+    status: 'Future',
     appcreated: '30 July 2019',
     apis: {
       type: 'Rest API key',
@@ -42,12 +44,13 @@ module.exports = [
       future: '3cf128f7-6a3d-4e94-b68b-9428bd6cc23a'
     },
     ip: '194.75.36.81',
-    javascript: ''
+    javascript: '',
+    keyname: 'Future updates testing key'
   },
   {
     id: 3,
     app: 'In development service',
-    status: 'test',
+    status: 'Test',
     appcreated: '1 August 2019',
     apis: {
       type: 'Rest API key',
@@ -57,6 +60,7 @@ module.exports = [
       future: 'd0210533-e268-4bbc-a754-fc8a7e60d3a3'
     },
     ip: '194.75.36.81',
-    javascript: ''
+    javascript: '',
+    keyname: 'New service test key'
   }
 ]

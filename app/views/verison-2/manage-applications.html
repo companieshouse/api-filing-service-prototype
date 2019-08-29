@@ -25,7 +25,7 @@
             </tr>
           </thead>
           {% for case in cases %}
-            {% if case.status === 'test' %}
+            {% if case.status === 'Test' %}
 
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">
@@ -48,7 +48,7 @@
             </tr>
           </thead>
           {% for case in cases %}
-            {% if case.status === 'live' %}
+            {% if case.status === 'Live' %}
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">
                   <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
@@ -72,7 +72,7 @@
             </tr>
           </thead>
           {% for case in cases %}
-            {% if case.status === 'future' %}
+            {% if case.status === 'Future' %}
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header">
                   <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
