@@ -9,13 +9,13 @@
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Manage Applications
+        Manage applications
       </h1>
       {{ govukButton({
       text: "Add an application",
       href: "register"
       }) }}
-      <h2 class="govuk-heading-l">Test Applications</h2>
+      <h2 class="govuk-heading-l">Test applications</h2>
       <table class="govuk-table">
         <tbody class="govuk-table__body">
           <thead class="govuk-table__head">
@@ -37,13 +37,13 @@
           {% endfor %}
         </tbody>
       </table>
-      <h2 class="govuk-heading-l">Live Applications</h2>
+      <h2 class="govuk-heading-l">Live applications</h2>
       <table class="govuk-table">
         <tbody class="govuk-table__body">
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Application name</th>
-              <th scope="col" class="govuk-table__header">Application complete?</th>
+              <th scope="col" class="govuk-table__header">Complete?</th>
               <th scope="col" class="govuk-table__header">Created date</th>
             </tr>
           </thead>
@@ -62,7 +62,7 @@
           {% endfor %}
         </tbody>
       </table>
-      <h2 class="govuk-heading-l">Future Applications</h2>
+      <h2 class="govuk-heading-l">Future applications</h2>
       <table class="govuk-table">
         <tbody class="govuk-table__body">
           <thead class="govuk-table__head">
