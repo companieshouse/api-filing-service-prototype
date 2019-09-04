@@ -10,11 +10,11 @@
       <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
       {{ govukInput({
   label: {
-    text: "Username",
+    text: "Email address",
     classes: "govuk-\!-font-weight-bold"
   },
-  id: "username",
-  name: "username"
+  id: "email",
+  name: "email"
 }) }}
       {{ govukInput({
   label: {
@@ -22,12 +22,20 @@
     classes: "govuk-\!-font-weight-bold"
   },
   id: "password",
+  type: "password",
   name: "password"
 }) }}
       {{ govukButton({
   text: "Sign in",
-  href: 'manage-applications.html'
+  href: 'manage-applications.html',
+  classes: 'govuk-!-margin-bottom-2'
 }) }}
+      <p>
+        <a href="#" class="govuk-link block govuk-body govuk-!-font-size-9">Register</a>
+      </p>
+      <p>
+        <a href="#" class="govuk-link block govuk-body govuk-!-font-size-9">Forgotten your password?</a>
+      </p>
     </div>
   </div>
 {% endblock %}

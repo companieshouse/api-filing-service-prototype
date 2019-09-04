@@ -9,6 +9,10 @@
   <div class="govuk-grid-row">
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+  text: "Back to all applications",
+  href: "manage-applications"
+}) }}
       <h1 class="govuk-heading-xl">
         New application
 
@@ -25,9 +29,6 @@
   id: "more-detail",
   label: {
     text: "Description of application"
-  },
-  hint: {
-    text: "This may be shown to the public"
   }
 }) }}
 
@@ -74,15 +75,36 @@ text: "Choose an environment for your application"
 items: [
 {
 value: "test",
-text: "Test"
+text: "Test",
+label: {
+  classes: "govuk-label--s"
+},
+
+      hint: {
+        text: "This is for your test environment"
+      }
 },
 {
 value: "live",
-text: "Live"
+text: "Live",
+label: {
+  classes: "govuk-label--s"
+},
+
+      hint: {
+        text: "This is for your live environment"
+      }
 },
 {
 value: "future",
-text: "Future"
+text: "Future",
+label: {
+  classes: "govuk-label--s"
+},
+
+      hint: {
+        text: "For upcoming changes to the API"
+      }
 }
 ]
 }) }}

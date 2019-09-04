@@ -19,6 +19,584 @@
       <p>Please refer to the
         <a href="http://forum.aws.chdev.org/">Developer Hub Forum</a>
         for ongoing feature and documentation discussions, and announcements on upcoming feature releases.</p>
+      <h2 class="govuk-heading-l">Getting started</h2>
+      <p>If you are new to the Companies House API, we recommend you take a look at the
+        <a href="/api/docs/index/gettingStarted.html">getting started</a>
+        guide, with the resources and examples provided there to help you.</p>
+      <p>We also have a support
+        <a href="https://forum.aws.chdev.org">forum</a>
+        where you can discuss the API, find help and provide feedback.</p>
+      <h2 class="govuk-heading-l">API reference</h2>
+      <h3 class="govuk-heading-m">Search</h3>
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="search" href="/api/docs/search/search.html">Search all</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/search</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/search</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Search Companies House</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="companysearch" href="/api/docs/search/companies/companysearch.html">Search company</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/search/companies</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/search/companies</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Search companies</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="officersearch" href="/api/docs/search/officers/officersearch.html">Search officer</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/search/officers</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/search/officers</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Search company officers</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="disqualifiedofficersearch" href="/api/docs/search/disqualified-officers/disqualifiedofficersearch.html">Search disqualified officer</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/search/disqualified-officers</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/search/disqualified-officers</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Search disqualified officers</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="search-overview/search-overview.html">Search</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="search-overview/CompanySearch-resource.html">CompanySearch</a>
+        ,
+        <a href="search-overview/DisqualifiedOfficerSearch-resource.html">DisqualifiedOfficerSearch</a>
+        ,
+        <a href="search-overview/OfficerSearch-resource.html">OfficerSearch</a>
+        and
+        <a href="search-overview/Search-resource.html">Search</a>
+        resource representation pages.
+      </p>
+
+      <h3 class="heading-small">Company profile</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="readCompanyProfile" href="/api/docs/company/company_number/readCompanyProfile.html">get</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the basic company information</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/company_number.html">Company profile</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/companyProfile-resource.html">companyProfile</a>
+        resource representation page.
+      </p>
+
+      <h3 class="heading-small">Registered office address</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="readRegisteredOfficeAddress" href="/api/docs/company/company_number/registered-office-address/readRegisteredOfficeAddress.html">get</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>registered-office-address</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/registered-office-address</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the current address of a company</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/registered-office-address/registered-office-address.html">Registered office address</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/registered-office-address/registeredOfficeAddress-resource.html">registeredOfficeAddress</a>
+        resource representation page.
+      </p>
+
+      <h3 class="heading-small">Company Officers</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="officerList" href="/api/docs/company/company_number/officers/officerList.html">list</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/officers</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/officers</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">List the company officers</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/officers/officers.html">Company Officers</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/officers/officerList-resource.html">officerList</a>
+        resource representation page.
+      </p>
+
+      <h3 class="heading-small">Filing history</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="getFilingHistoryItem" href="/api/docs/company/company_number/filing-history/transaction_id/getFilingHistoryItem.html">get</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>filing-history/{transaction_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/filing-history/{transaction_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the filing history of the company</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="getFilingHistoryList" href="/api/docs/company/company_number/filing-history/getFilingHistoryList.html">list</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>filing-history</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/filing-history</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the filing history of the company</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/filing-history/filing-history.html">Filing history</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/filing-history/filingHistoryItem-resource.html">filingHistoryItem</a>
+        and
+        <a href="company/company_number/filing-history/filingHistoryList-resource.html">filingHistoryList</a>
+        resource representation pages.
+      </p>
+
+      <h3 class="heading-small">Insolvency</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="readCompanyInsolvency" href="/api/docs/company/company_number/insolvency/readCompanyInsolvency.html">get</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>insolvency</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/insolvency</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get company insolvency information</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/insolvency/insolvency.html">Insolvency</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/insolvency/companyInsolvency-resource.html">companyInsolvency</a>
+        resource representation page.
+      </p>
+
+      <h3 class="heading-small">Charges</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="getChargeList" href="/api/docs/company/company_number/charges/getChargeList.html">list</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/charges</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/charges</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get a list of charges for a company</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="getChargeDetails" href="/api/docs/company/company_number/charges/charge_id/getChargeDetails.html">get</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/charges/<br>{charge_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/charges/{charge_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get a single charge for a company</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/charges/charges.html">Charges</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/charges/chargeDetails-resource.html">chargeDetails</a>
+        and
+        <a href="company/company_number/charges/chargeList-resource.html">chargeList</a>
+        resource representation pages.
+      </p>
+
+      <h3 class="heading-small">Officer Appointment List</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="appointmentList" href="/api/docs/officers/officer_id/appointments/appointmentList.html">list</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/officers/{officer_id}/<br>appointments</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/officers/{officer_id}/appointments</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">List the officer appointments</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="officers/officer_id/appointments/appointments.html">Officer Appointment List</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="officers/officer_id/appointments/appointmentList-resource.html">appointmentList</a>
+        resource representation page.
+      </p>
+
+      <h3 class="heading-small">Officer disqualifications</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="naturalDisqualification" href="/api/docs/disqualified-officers/natural/officer_id/naturalDisqualification.html">Get natural</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/disqualified-officers/natural/<br>{officer_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/disqualified-officers/natural/{officer_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get a natural officer's disqualifications</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="corporateDisqualification" href="/api/docs/disqualified-officers/corporate/officer_id/corporateDisqualification.html">Get corporate</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/disqualified-officers/corporate/<br>{officer_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/disqualified-officers/corporate/{officer_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get a corporate officer's disqualifications</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="disqualified-officers/disqualified-officers.html">Officer disqualifications</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="disqualified-officers/corporateDisqualification-resource.html">corporateDisqualification</a>
+        and
+        <a href="disqualified-officers/naturalDisqualification-resource.html">naturalDisqualification</a>
+        resource representation pages.
+      </p>
+
+      <h3 class="heading-small">UK establishment companies</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="getCompanyUKEstablishments" href="/api/docs/company/company_number/uk-establishments/getCompanyUKEstablishments.html">list</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>uk-establishments</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/uk-establishments</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get a list of UK Establishment companies</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/uk-establishments/uk-establishments.html">UK establishment companies</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/uk-establishments/companyUKEstablishments-resource.html">companyUKEstablishments</a>
+        resource representation page.
+      </p>
+
+      <h3 class="heading-small">Persons with significant control</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="listPersonsWithSignificantControl" href="/api/docs/company/company_number/persons-with-significant-control/listPersonsWithSignificantControl.html">list</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>persons-with-significant-control</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/persons-with-significant-control</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">List the company persons with significant control</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="getIndividualWithSignificantControl" href="/api/docs/company/company_number/persons-with-significant-control/individual/psc_id/getIndividualWithSignificantControl.html">get individual</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>persons-with-significant-control/<br>individual/{psc_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/persons-with-significant-control/individual/{psc_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the individual person with significant control</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="getCorporateEntityWithSignificantControl" href="/api/docs/company/company_number/persons-with-significant-control/corporate-entity/psc_id/getCorporateEntityWithSignificantControl.html">get corporate entities</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>persons-with-significant-control/<br>corporate-entity/{psc_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/persons-with-significant-control/corporate-entity/{psc_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the corporate entity with significant control</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="getLegalPersonWithSignificantControl" href="/api/docs/company/company_number/persons-with-significant-control/legal-person/psc_id/getLegalPersonWithSignificantControl.html">get legal persons</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>persons-with-significant-control/<br>legal-person/{psc_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/persons-with-significant-control/legal-person/{psc_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the legal person with significant control</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="listPersonsWithSignificantControlStatements" href="/api/docs/company/company_number/persons-with-significant-control-statements/listPersonsWithSignificantControlStatements.html">list statements</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>persons-with-significant-control-statements</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/persons-with-significant-control-statements</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">List the company persons with significant control statements</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="getPersonsWithSignificantControlStatement" href="/api/docs/company/company_number/persons-with-significant-control-statements/statement_id/getPersonsWithSignificantControlStatement.html">get statement</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>persons-with-significant-control-statements/<br>{statement_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/persons-with-significant-control-statements/{statement_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the person with significant control statement</td>
+          </tr>
+
+          <tr>
+            <td>
+              <a id="getSuperSecurePersonWithSignificantControl" href="/api/docs/company/company_number/persons-with-significant-control/super-secure/super_secure_id/getSuperSecurePersonWithSignificantControl.html">get super secure person</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>persons-with-significant-control/<br>super-secure/{super_secure_id}</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/persons-with-significant-control/super-secure/{super_secure_id}</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the super secure person with significant control</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/persons-with-significant-control/persons-with-significant-control.html">Persons with significant control</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/persons-with-significant-control/corporateEntity-resource.html">corporateEntity</a>
+        ,
+        <a href="company/company_number/persons-with-significant-control/individual-resource.html">individual</a>
+        ,
+        <a href="company/company_number/persons-with-significant-control/legalPerson-resource.html">legalPerson</a>
+        ,
+        <a href="company/company_number/persons-with-significant-control/list-resource.html">list</a>
+        ,
+        <a href="company/company_number/persons-with-significant-control/statement-resource.html">statement</a>
+        ,
+        <a href="company/company_number/persons-with-significant-control/statementList-resource.html">statementList</a>
+        and
+        <a href="company/company_number/persons-with-significant-control/superSecure-resource.html">superSecure</a>
+        resource representation pages.
+      </p>
+
+      <h3 class="heading-small">Company registers</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="readCompanyRegister" href="/api/docs/company/company_number/registers/readCompanyRegister.html">get</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>registers</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/registers</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the company registers information</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/registers/registers.html">Company registers</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/registers/companyRegister-resource.html">companyRegister</a>
+        resource representation page.
+      </p>
+
+      <h3 class="heading-small">Company exemptions</h3>
+
+      <table class="display-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>HTTP Request</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>
+              <a id="readCompanyExemptions" href="/api/docs/company/company_number/exemptions/readCompanyExemptions.html">get</a>
+            </td>
+            <td>
+              <pre>get&nbsp;/company/{company_number}/<br>exemptions</pre>
+            </td>
+            <!-- <td><pre class="httprequest">GET&nbsp;/company/{company_number}/exemptions</pre></td> -->
+            <td class="hyphenate Hyphenator906hide">Get the company exemptions information.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>For full documentation regarding these resource URIs, see the
+        <a href="company/company_number/exemptions/exemptions.html">Company exemptions</a>
+        page.</p>
+      <p>For a description of the resources accepted and returned by these URIs, see the
+        <a href="company/company_number/exemptions/companyExemptions-resource.html">companyExemptions</a>
+        resource representation page.
+      </p>
     </div>
   </div>
 {% endblock %}

@@ -46,6 +46,13 @@ router.get('/verison-1/view-application', function (req, res) {
   })
 })
 
+router.get('/verison-1/edit', function (req, res) {
+  var id = parseInt(req.query.id)
+  res.render('verison-1/edit', {
+    case: req.session.cases[id]
+  })
+})
+
 router.get('/verison-1/register', function (req, res) {
   res.render('verison-1/register', {
 

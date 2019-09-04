@@ -67,11 +67,8 @@
           <dd class="govuk-summary-list__actions"></dd>
         </div>
       </dl>
-      {{ govukButton({
-text: "Manage application",
-classes: "govuk-!-margin-right-1",
-href: "edit"
-}) }}
+
+      <a href="edit?id={{ case.id }}" class="govuk-button" role="button" draggable="false">Manage application</a>
 
       <h2 class="govuk-heading-l">Keys for this application</h2>
       <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
@@ -149,7 +146,7 @@ href: "edit"
 
       {{ govukButton({
 text: "Delete key",
-classes: "govuk-!-margin-right-1",
+ classes: "govuk-button--warning",
 href: "delete-key"
 }) }}
 
