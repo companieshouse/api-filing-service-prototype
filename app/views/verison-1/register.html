@@ -29,7 +29,10 @@
   id: "more-detail",
   label: {
     text: "Description of application"
-  }
+  },
+  hint: {
+   text: "A summary of the app, this may be shown to the public if you choose the live environment."
+ }
 }) }}
 
       {{ govukTextarea({
@@ -113,14 +116,20 @@ label: {
     text: "Privacy Policy URL"
   },
   id: "event-name",
-  name: "event-name"
+  name: "event-name",
+  hint: {
+    text: "Link to your privacy policy page."
+  }
 }) }}
       {{ govukInput({
 label: {
 text: "Terms & Conditions URL"
 },
 id: "event-name",
-name: "event-name"
+name: "event-name",
+hint: {
+  text: "Link to your terms and conditions page."
+}
 }) }}
 
       {{ govukButton({
