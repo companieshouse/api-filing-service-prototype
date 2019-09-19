@@ -31,42 +31,10 @@
     text: "Description of application"
   },
   hint: {
-   text: "A summary of the app, this may be shown to the public if you choose the live environment."
- }
+    text: "This may be shown to the public"
+  }
 }) }}
 
-      {{ govukTextarea({
-name: "uris",
-id: "uris",
-label: {
-text: "URIs"
-},
-hint: {
-text: "Enter each URI on a new line"
-}
-}) }}
-
-      {{ govukTextarea({
-name: "js-domain",
-id: "js-domain",
-label: {
-text: "JS domains"
-},
-hint: {
-text: "Enter each domain on a new line"
-}
-}) }}
-
-      {{ govukTextarea({
-name: "more-detail",
-id: "more-detail",
-label: {
-text: "Restricted IPs"
-},
-hint: {
-text: "Enter each IP address on a new line"
-}
-}) }}
       {{ govukRadios({
 idPrefix: "environment",
 name: "environment",
@@ -78,36 +46,15 @@ text: "Choose an environment for your application"
 items: [
 {
 value: "test",
-text: "Test",
-label: {
-  classes: "govuk-label--s"
-},
-
-      hint: {
-        text: "This is for your test environment"
-      }
+text: "Test"
 },
 {
 value: "live",
-text: "Live",
-label: {
-  classes: "govuk-label--s"
-},
-
-      hint: {
-        text: "This is for your live environment"
-      }
+text: "Live"
 },
 {
 value: "future",
-text: "Future",
-label: {
-  classes: "govuk-label--s"
-},
-
-      hint: {
-        text: "For upcoming changes to the API"
-      }
+text: "Future"
 }
 ]
 }) }}
@@ -116,26 +63,45 @@ label: {
     text: "Privacy Policy URL"
   },
   id: "event-name",
-  name: "event-name",
-  hint: {
-    text: "Link to your privacy policy page."
-  }
+  name: "event-name"
 }) }}
       {{ govukInput({
 label: {
 text: "Terms & Conditions URL"
 },
 id: "event-name",
-name: "event-name",
-hint: {
-  text: "Link to your terms and conditions page."
-}
+name: "event-name"
 }) }}
+      {% set emailHtml %}
+      {{ govukInput({
+  id: "contact-by-email",
+  name: "contact-by-email",
+  type: "email",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Company number"
+  },
+  attributes: {
+    spellcheck: "false"
+  }
+}) }}
+      {% endset -%}
+
+      {% set phoneHtml %}
+      {{ govukInput({
+  id: "contact-by-phone",
+  name: "contact-by-phone",
+  type: "tel",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Phone number"
+  }
+}) }}
+      {% endset -%}
 
       {{ govukButton({
   text: "Create",
-  classes: "govuk-!-margin-right-1",
-  href: 'manage-applications'
+  classes: "govuk-!-margin-right-1"
 }) }}
 
       {{ govukButton({

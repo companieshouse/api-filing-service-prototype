@@ -31,27 +31,12 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Restricted IPs
-          </dt>
-          <dd class="govuk-summary-list__value">
-            194.75.36.81
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            JavaScript domains
+            Application description
           </dt>
           <dd class="govuk-summary-list__value"></dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Redirect URIs
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
+
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Privacy Policy URL
@@ -76,8 +61,7 @@
           <dt class="govuk-summary-list__key">
             Key name
           </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.keyname }}</dd>
+          <dd class="govuk-summary-list__value">{{ case.keyname }}</dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
         <div class="govuk-summary-list__row">
@@ -141,7 +125,29 @@
             </dd>
           </div>
         {% endif %}
-
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Restricted IPs
+          </dt>
+          <dd class="govuk-summary-list__value">
+            194.75.36.81
+          </dd>
+          <dd class="govuk-summary-list__actions"></dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            JavaScript domains
+          </dt>
+          <dd class="govuk-summary-list__value"></dd>
+          <dd class="govuk-summary-list__actions"></dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Redirect URIs
+          </dt>
+          <dd class="govuk-summary-list__value"></dd>
+          <dd class="govuk-summary-list__actions"></dd>
+        </div>
       </dl>
 
       {{ govukButton({
