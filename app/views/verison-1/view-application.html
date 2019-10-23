@@ -29,28 +29,22 @@
           </dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Application description
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Privacy Policy URL
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Terms & Conditions URL
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
+        {% if case.status === 'Live' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Privacy Policy URL
+            </dt>
+            <dd class="govuk-summary-list__value"></dd>
+            <dd class="govuk-summary-list__actions"></dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Terms & Conditions URL
+            </dt>
+            <dd class="govuk-summary-list__value"></dd>
+            <dd class="govuk-summary-list__actions"></dd>
+          </div>
+        {% endif %}
       </dl>
 
       <a href="edit?id={{ case.id }}" class="govuk-button" role="button" draggable="false">Manage application</a>
@@ -62,7 +56,9 @@
             Key name
           </dt>
           <dd class="govuk-summary-list__value">{{ case.keyname }}</dd>
-          <dd class="govuk-summary-list__actions"></dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="">Delete key</a>
+          </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -150,15 +146,9 @@
         </div>
       </dl>
 
-      {{ govukButton({
-text: "Delete key",
- classes: "govuk-button--warning",
-href: "delete-key"
-}) }}
-
       <hr/>
       <div class="govuk-!-margin-top-6">
-        <a href="add-new-key.html" class=" govuk-body govuk-!-font-size-20">Add new key</a>
+        <a href="add-new-key.html" class="govuk-button" role="button" draggable="false">Add new key</a>
       </div>
 
     </div>
