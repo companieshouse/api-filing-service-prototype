@@ -8,3 +8,7 @@ if (window.console && window.console.info) {
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
+
+$(function () {
+  $('nav a[href^="' + location.pathname.split('/')[1] + '"]').addClass('active')
+})
