@@ -399,10 +399,6 @@ $govuk-global-styles: true;
   float: right;
 }
 
-.govuk-header__wrapper {
-  display: inline-block;
-}
-
 .app-header-mobile-nav-toggler {
   display: none;
   vertical-align: text-bottom;
@@ -456,6 +452,10 @@ $govuk-global-styles: true;
 @media (max-width: 40.0525em) {
   .js-enabled .app-header-mobile-nav-toggler {
     display: inline;
+  }
+
+  .govuk-header__wrapper {
+    display: inline-block;
   }
 }
 

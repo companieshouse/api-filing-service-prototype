@@ -10,8 +10,7 @@ $(document).ready(function () {
   $('.js-app-mobile-nav-toggler').click(function ($module) {
     var navActiveClass = 'app-mobile-nav--active'
     var navTogglerActiveClass = 'app-header-mobile-nav-toggler--active'
-    var subNavActiveClass = 'app-mobile-nav__subnav--active'
-    var subNavTogglerActiveClass = 'app-mobile-nav__subnav-toggler--active'
+
     this.$module = $module || document
     this.$nav = document.querySelector('.js-app-mobile-nav')
     this.$navToggler = document.querySelector('.js-app-mobile-nav-toggler')
@@ -32,8 +31,29 @@ $(document).ready(function () {
       $navToggler.classList.add(navTogglerActiveClass)
     }
   })
-})
+  $('.js-mobile-nav-subnav-toggler').click(function (event) {
+    var $toggler = event.target
+    var subNavActiveClass = 'app-mobile-nav__subnav--active'
+    var subNavTogglerActiveClass = 'app-mobile-nav__subnav-toggler--active'
+    if (!$toggler.classList.contains('js-mobile-nav-subnav-toggler')) {
+      return
+    }
+    var $togglerLinkArea = $toggler.parentNode
+    var $nextSubNav = $togglerLinkArea.parentNode.querySelector('.js-app-mobile-nav-subnav')
+    if ($nextSubNav) {
+      if ($nextSubNav.classList.contains(subNavActiveClass)) {
+        $nextSubNav.classList.remove(subNavActiveClass)
+        $togglerLinkArea.classList.remove(subNavTogglerActiveClass)
 
-$(function () {
-  $('nav a[href^="' + location.pathname.split('/')[1] + '"]').addClass('active')
+        $nextSubNav.setAttribute('aria-hidden', 'true')
+        $toggler.setAttribute('aria-expanded', 'false')
+      } else {
+        $nextSubNav.classList.add(subNavActiveClass)
+        $togglerLinkArea.classList.add(subNavTogglerActiveClass)
+        $nextSubNav.setAttribute('aria-hidden', 'false')
+        $toggler.setAttribute('aria-expanded', 'true')
+      }
+      event.preventDefault()
+    }
+  })
 })
