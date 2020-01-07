@@ -395,14 +395,19 @@ $govuk-global-styles: true;
 }
 
 .app-header-mobile-nav-toggler-wrapper {
-  display: block;
+  display: inline-block;
   float: right;
+}
+
+.govuk-header__wrapper {
+  display: inline-block;
 }
 
 .app-header-mobile-nav-toggler {
   display: none;
+  vertical-align: text-bottom;
   min-height: 40px;
-  margin-top: 10px;
+  margin-top: 3px;
   margin-bottom: 10px;
   padding-right: 0;
   padding-left: 0;
