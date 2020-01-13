@@ -38,7 +38,7 @@
         </tbody>
       </table>
       <h2 class="govuk-heading-l">Live applications</h2>
-      <p class="govuk-body">Released and in use</p>
+      <p class="govuk-body">Released and in use publicly</p>
 
       <table class="govuk-table">
         <tbody class="govuk-table__body">
@@ -59,28 +59,6 @@
           {% endfor %}
         </tbody>
       </table>
-      <h2 class="govuk-heading-l">Future applications</h2>
-      <p class="govuk-body">In development for upcoming Companies House changes</p>
-
-      <table class="govuk-table">
-        <tbody class="govuk-table__body">
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Application name</th>
-            </tr>
-          </thead>
-          {% for case in cases %}
-            {% if case.status === 'Future' %}
-              <tr class="govuk-table__row">
-                <th scope="row" class="govuk-table__header">
-                  <a href="view-application?id={{ case.id }}">{{ case.app }}</a>
-                </th>
-              </tr>
-            {% endif %}
-          {% endfor %}
-        </tbody>
-      </table>
-
     </div>
   </div>
 {% endblock %}

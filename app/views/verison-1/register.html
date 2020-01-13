@@ -32,6 +32,42 @@
   }
 }) }}
 
+      {% set test %}
+      {{ govukCheckboxes({
+        idPrefix: "waste",
+        name: "waste",
+        fieldset: {
+          legend: {
+            text: "In development for upcoming Companies House changes"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          }
+        ]
+      }) }}
+      {% endset -%}
+
+      {% set live %}
+      {{ govukInput({
+  label: {
+    text: "Terms & Conditions URL"
+  },
+  id: "event-name",
+  name: "event-name"
+}) }}
+
+      {{ govukInput({
+label: {
+text: "Privacy Policy URL"
+},
+id: "event-name",
+name: "event-name"
+}) }}
+      {% endset -%}
+
       {{ govukRadios({
 idPrefix: "environment",
 name: "environment",
@@ -43,18 +79,17 @@ text: "Choose an environment for your application"
 items: [
 {
 value: "test",
-text: "Test"
+text: "Test",
+conditional: {
+  html: test
+}
 },
 {
 value: "live",
 text: "Live",
 conditional: {
-  html: textHtml
+  html: live
 }
-},
-{
-value: "future",
-text: "Future"
 }
 ]
 }) }}

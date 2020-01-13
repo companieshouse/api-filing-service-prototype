@@ -13,7 +13,6 @@ $govuk-global-styles: true;
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-/* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
 #global-nav {
   font-family: 'proxima_nova', Arial, sans-serif;
   font-weight: 400;
@@ -25,47 +24,41 @@ $govuk-global-styles: true;
   z-index: 60;
 }
 @media (min-width: 641px) {
-  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav {
     font-size: 16px;
     line-height: 1.25;
   }
 }
 @media (max-width: 640px) {
-  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav {
     margin: 0 -15px 1em;
   }
 }
 @media (min-width: 641px) {
-  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav {
     margin: 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 24, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav {
     text-align: right;
   }
 }
-/* line 42, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .inner {
   padding: 0;
 }
 @media (min-width: 769px) {
-  /* line 42, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav .inner {
     padding: 0 30px;
   }
 }
 @media (min-width: 641px) {
-  /* line 42, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav .inner {
     padding-bottom: 0;
   }
 }
-/* line 54, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .js-header-toggle,
 #global-nav .sign-in {
   display: block;
@@ -75,48 +68,45 @@ $govuk-global-styles: true;
   padding: 1em;
 }
 @media (min-width: 641px) {
-  /* line 54, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav .js-header-toggle,
   #global-nav .sign-in {
     display: none;
   }
 }
 @media (min-width: 769px) {
-  /* line 54, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav .js-header-toggle,
   #global-nav .sign-in {
     display: none;
   }
 }
-/* line 70, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .js-header-toggle:focus,
 #global-nav .js-header-toggle:hover,
 #global-nav .sign-in:focus,
 #global-nav .sign-in:hover {
   text-decoration: underline;
 }
-/* line 76, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .home a {
   display: block;
   float: left;
   padding-left: 0;
 }
-/* line 81, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .jump-link {
   float: right;
 }
 @media (min-width: 769px) {
-  /* line 81, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav .jump-link {
     position: absolute;
     left: -99999em;
   }
 }
-/* line 91, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .js-header-toggle:focus {
   outline: none;
 }
-/* line 94, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .js-header-toggle:after {
   display: inline-block;
   font-size: 8px;
@@ -125,28 +115,21 @@ $govuk-global-styles: true;
   vertical-align: middle;
   content: ' \25BC';
 }
-/* line 105, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav.open .js-header-toggle:after {
   content: ' \25B2';
 }
-/* line 111, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav nav {
-  clear: both;
-  /* sort top border whenbeta turns off
 
-      @include govuk-header-bar();
-
-      */
   border-bottom: 1px solid #bfc1c3;
 }
 @media (min-width: 769px) {
-  /* line 111, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav {
     padding: 10px 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 111, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav {
     clear: none;
     background: transparent;
@@ -154,32 +137,30 @@ $govuk-global-styles: true;
     margin-bottom: 0;
   }
 }
-/* line 131, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav nav #navigation {
   margin: 0;
   padding: 0 0 1em;
 }
 @media (min-width: 641px) {
-  /* line 131, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav #navigation {
     padding: 10px 0;
   }
 }
 @media (min-width: 769px) {
-  /* line 131, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav #navigation {
     padding: 0;
   }
 }
-/* line 145, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav nav .current {
   color: #fff;
 }
-/* line 148, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav nav a {
   text-decoration: underline;
 }
-/* line 151, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav nav li {
   padding: 10px 0 10px 16px;
   margin-bottom: 0;
@@ -187,40 +168,35 @@ $govuk-global-styles: true;
   position: relative;
 }
 @media (max-width: 640px) {
-  /* line 151, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav li {
     padding: 1em 1em 0;
   }
 }
 @media (min-width: 641px) {
-  /* line 151, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav li {
     display: inline;
   }
 }
 @media (max-width: 640px) {
-  /* line 163, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav li.user {
     display: none;
   }
 }
 @media (min-width: 641px) {
-  /* line 163, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav li.user {
     padding-left: 0;
   }
 }
 @media (min-width: 641px) {
-  /* line 171, ../../../app/assets/stylesheets/views/global-nav.scss */
   #global-nav nav li.unauthenticated {
     padding-left: 0;
   }
 }
-/* line 180, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .home a {
   position: relative;
 }
-/* line 182, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .home a small {
   position: absolute;
   top: .8em;
@@ -231,21 +207,19 @@ $govuk-global-styles: true;
   padding: 2px 5px 0;
   margin-left: 10px;
 }
-/* line 193, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .home a small.alpha {
   background-color: #d53880;
 }
-/* line 197, ../../../app/assets/stylesheets/views/global-nav.scss */
+
 #global-nav .home a small.beta {
   background-color: #f47738;
 }
 
-/* line 204, ../../../app/assets/stylesheets/views/global-nav.scss */
 #global-header form#search input.submit {
   cursor: pointer;
 }
 
-/* line 207, ../../../app/assets/stylesheets/views/global-nav.scss */
 #global-header .search-toggle {
   margin-top: 5px;
   width: 34px;
@@ -256,6 +230,8 @@ $govuk-global-styles: true;
   color: #007f80;
   font-weight: bold;
 }
+
+//Sidebar styling
 
 .app-subnav {
   padding: 0 15px 0 0;
@@ -458,6 +434,8 @@ $govuk-global-styles: true;
     display: inline-block;
   }
 }
+
+//App Mobile Menu Styling
 
 .app-mobile-nav {
   display: none;
