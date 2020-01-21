@@ -231,6 +231,16 @@ $govuk-global-styles: true;
   font-weight: bold;
 }
 
+:not(pre) > code,
+pre[class*="language-"] {
+  background: #f5f2f0;
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  color: #007f80;
+  font-weight: bold;
+}
+
 //Sidebar styling
 
 .app-subnav {

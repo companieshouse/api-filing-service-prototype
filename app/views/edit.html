@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
-
 {% block pageTitle %}
-  Edit Application
+  Edit application
 {% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     {% include "includes/sidebar.html" %}
@@ -15,10 +13,8 @@
       <h1 class="govuk-heading-xl">
         {{ case.app }}
       </h1>
-
       <h2 class="govuk-heading-l">
         Update application
-
       </h2>
       {{ govukInput({
         label: {
@@ -27,7 +23,6 @@
         id: "event-name",
         name: "event-name"
       }) }}
-
       {{ govukInput({
   label: {
     text: "Privacy Policy URL"
@@ -42,12 +37,10 @@ text: "Terms & Conditions URL"
 id: "event-name",
 name: "event-name"
 }) }}
-
       {{ govukButton({
   text: "Update",
   classes: "govuk-!-margin-right-1"
 }) }}
-
       {{ govukButton({
   text: "Cancel",
   classes: "govuk-button--secondary",
@@ -55,9 +48,8 @@ name: "event-name"
 }) }}
       <h2 class="govuk-heading-l">
         Delete application
-
       </h2>
-      <p>Once you delete this application all information and keys assoiscated with this will also be removed</p>
+      <p class="govuk-body">Once you delete this application all information and keys assoiscated with this will also be removed</p>
       {{ govukButton({
 text: "Delete application",
 classes: "govuk-button--warning",

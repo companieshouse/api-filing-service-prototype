@@ -1,19 +1,14 @@
 {% extends "layout.html" %}
-
 {% block pageTitle %}
-  Register Application
+  Delete key
 {% endblock %}
-
 {% block content %}
-
   <div class="govuk-grid-row">
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
         Delete API client key
-
       </h1>
-
       <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -31,7 +26,6 @@
           </dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
-
         {% if case.status === 'test' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -49,7 +43,6 @@
             </dd>
           </div>
         {% endif %}
-
         {% if case.status === 'live' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -66,7 +59,6 @@
             </dd>
           </div>
         {% endif %}
-
         {% if case.status === 'future' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -83,14 +75,11 @@
             </dd>
           </div>
         {% endif %}
-
       </dl>
-
       {{ govukButton({
         text: "Delete key",
         classes: "govuk-button--warning"
       }) }}
-
     </div>
   </div>
 {% endblock %}
