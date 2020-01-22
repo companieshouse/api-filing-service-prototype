@@ -232,31 +232,28 @@
   </header>
   <div class="govuk-width-container">
     {{ govukPhaseBanner({
-  tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
+      tag: {
+        text: "beta"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
     <div class="js-toggle-nav" id="global-nav">
       <div id="user_bar">
         <nav role="navigation" class="content">
           <ul id="navigation">
-            <li id="signed-in-user" class="user">
-              <a href="https://forum.aws.chdev.org">Forum</a>
-            </li>
             <li>
               <a id="user-signout" href="sign-in">Sign in / Register</a>
             </li>
+            <li id="signed-in-user" class="user">
+              <a href="https://forum.aws.chdev.org">Developer hub forum</a>
+            </li>
           </ul>
-
         </nav>
-
       </div>
     </div>
   </div>
 </div>
 {% endblock %}
-
 {% if useAutoStoreData %}
 {% block footer %}
   {{ govukFooter({
@@ -283,11 +280,9 @@
     }) }}
 {% endblock %}
 {% endif %}
-
 {% block bodyEnd %}
 {% block scripts %}
   {% include "includes/scripts.html" %}
   {% block pageScripts %}{% endblock %}
 {% endblock %}
-<!-- GOV.UK Prototype Kit {{releaseVersion}} -->
 {% endblock %}
