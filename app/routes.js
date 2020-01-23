@@ -16,12 +16,12 @@ router.all('*', function (req, res, next) {
   }
   next()
 })
-router.get('manage-applications', function (req, res) {
+router.get('/manage-applications', function (req, res) {
   res.render('manage-applications', {
     cases: req.session.cases
   })
 })
-router.get('view-application', function (req, res) {
+router.get('/view-application', function (req, res) {
   var id = parseInt(req.query.id)
   var i = 0
   for (i = 0; i < req.session.cases.length; i++) {
@@ -34,13 +34,13 @@ router.get('view-application', function (req, res) {
 
   })
 })
-router.get('edit', function (req, res) {
+router.get('/edit', function (req, res) {
   var id = parseInt(req.query.id)
   res.render('edit', {
     case: req.session.cases[id]
   })
 })
-router.get('register', function (req, res) {
+router.get('/register', function (req, res) {
   res.render('register', {
   })
 })

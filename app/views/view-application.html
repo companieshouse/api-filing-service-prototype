@@ -1,13 +1,9 @@
 {% extends "layout.html" %}
-
 {% block pageTitle %}
-  View Application
+  View application
 {% endblock %}
-
 {% block content %}
-
   <div class="govuk-grid-row">
-
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
       {{ govukBackLink({
@@ -16,7 +12,6 @@
 }) }}
       <h1 class="govuk-heading-xl">
         {{ case.app }}
-
       </h1>
       <h2 class="govuk-heading-l">Manage application</h2>
       <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
@@ -146,11 +141,9 @@
         </div>
       </dl>
 
-      <hr/>
       <div class="govuk-!-margin-top-6">
         <a href="add-new-key.html" class="govuk-button" role="button" draggable="false">Add new key</a>
       </div>
-
     </div>
   </div>
 {% endblock %}
