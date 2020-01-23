@@ -7,9 +7,9 @@
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
       {{ govukBackLink({
-  text: "Back to all applications",
-  href: "manage-applications"
-}) }}
+        text: "Back to all applications",
+        href: "manage-applications"
+      }) }}
       <h1 class="govuk-heading-xl">
         {{ case.app }}
       </h1>
@@ -41,9 +41,7 @@
           </div>
         {% endif %}
       </dl>
-
       <a href="edit?id={{ case.id }}" class="govuk-button" role="button" draggable="false">Manage application</a>
-
       <h2 class="govuk-heading-l">Keys for this application</h2>
       <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
         <div class="govuk-summary-list__row">
@@ -64,7 +62,6 @@
           </dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
-
         {% if case.status === 'Test' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -82,7 +79,6 @@
             </dd>
           </div>
         {% endif %}
-
         {% if case.status === 'Live' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -140,7 +136,6 @@
           <dd class="govuk-summary-list__actions"></dd>
         </div>
       </dl>
-
       <div class="govuk-!-margin-top-6">
         <a href="add-new-key.html" class="govuk-button" role="button" draggable="false">Add new key</a>
       </div>

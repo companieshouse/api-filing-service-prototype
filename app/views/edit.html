@@ -25,38 +25,38 @@
       }) }}
       {% if case.status === 'Live' %}
         {{ govukInput({
-  label: {
-    text: "Privacy Policy URL"
-  },
-  id: "event-name",
-  name: "event-name"
-}) }}
+          label: {
+            text: "Privacy Policy URL"
+          },
+          id: "event-name",
+          name: "event-name"
+        }) }}
         {{ govukInput({
-label: {
-text: "Terms & Conditions URL"
-},
-id: "event-name",
-name: "event-name"
-}) }}
+          label: {
+            text: "Terms & Conditions URL"
+          },
+          id: "event-name",
+          name: "event-name"
+         }) }}
       {% endif %}
       {{ govukButton({
-  text: "Update",
-  classes: "govuk-!-margin-right-1"
-}) }}
+        text: "Update",
+        classes: "govuk-!-margin-right-1"
+      }) }}
       {{ govukButton({
-  text: "Cancel",
-  classes: "govuk-button--secondary",
-  href: "manage-applications"
-}) }}
+        text: "Cancel",
+        classes: "govuk-button--secondary",
+        href: "manage-applications"
+      }) }}
       <h2 class="govuk-heading-l">
         Delete application
       </h2>
       <p class="govuk-body">Once you delete this application all information and keys assoiscated with this will also be removed</p>
       {{ govukButton({
-text: "Delete application",
-classes: "govuk-button--warning",
-href: 'manage-applications'
-}) }}
+        text: "Delete application",
+        classes: "govuk-button--warning",
+        href: 'manage-applications'
+      }) }}
     </div>
   </div>
 {% endblock %}
