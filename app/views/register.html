@@ -44,22 +44,6 @@
         ]
       }) }}
       {% endset -%}
-      {% set live %}
-      {{ govukInput({
-        label: {
-          text: "Terms & Conditions URL"
-        },
-        id: "event-name",
-        name: "event-name"
-      }) }}
-      {{ govukInput({
-        label: {
-          text: "Privacy Policy URL"
-        },
-        id: "event-name",
-        name: "event-name"
-      }) }}
-      {% endset -%}
       {{ govukRadios({
         idPrefix: "environment",
         name: "environment",
@@ -78,38 +62,24 @@
           },
           {
             value: "live",
-            text: "Live",
-            conditional: {
-              html: live
-            }
+            text: "Live"
           }
         ]
       }) }}
-      {% set emailHtml %}
       {{ govukInput({
-        id: "contact-by-email",
-        name: "contact-by-email",
-        type: "email",
-        classes: "govuk-!-width-one-third",
         label: {
-          text: "Company number"
+          text: "Terms & Conditions URL (optional)"
         },
-        attributes: {
-          spellcheck: "false"
-        }
+        id: "event-name",
+        name: "event-name"
       }) }}
-      {% endset -%}
-      {% set phoneHtml %}
       {{ govukInput({
-        id: "contact-by-phone",
-        name: "contact-by-phone",
-        type: "tel",
-        classes: "govuk-!-width-one-third",
         label: {
-          text: "Phone number"
-        }
+          text: "Privacy Policy URL (optional)"
+        },
+        id: "event-name",
+        name: "event-name"
       }) }}
-      {% endset -%}
       {{ govukButton({
         text: "Create",
         classes: "govuk-!-margin-right-1"
