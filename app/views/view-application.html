@@ -24,22 +24,20 @@
           </dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
-        {% if case.status === 'Live' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Privacy Policy URL
-            </dt>
-            <dd class="govuk-summary-list__value"></dd>
-            <dd class="govuk-summary-list__actions"></dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Terms & Conditions URL
-            </dt>
-            <dd class="govuk-summary-list__value"></dd>
-            <dd class="govuk-summary-list__actions"></dd>
-          </div>
-        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Privacy Policy URL
+          </dt>
+          <dd class="govuk-summary-list__value"></dd>
+          <dd class="govuk-summary-list__actions"></dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Terms & Conditions URL
+          </dt>
+          <dd class="govuk-summary-list__value"></dd>
+          <dd class="govuk-summary-list__actions"></dd>
+        </div>
       </dl>
       <a href="edit?id={{ case.id }}" class="govuk-button govuk-button--secondary" role="button" draggable="false">Manage application</a>
       <h2 class="govuk-heading-l">Keys for this application</h2>
