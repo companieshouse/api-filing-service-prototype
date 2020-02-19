@@ -23,22 +23,20 @@
         id: "event-name",
         name: "event-name"
       }) }}
-      {% if case.status === 'Live' %}
-        {{ govukInput({
+      {{ govukInput({
           label: {
-            text: "Privacy Policy URL"
+            text: "Privacy Policy URL (optional)"
           },
           id: "event-name",
           name: "event-name"
         }) }}
-        {{ govukInput({
+      {{ govukInput({
           label: {
-            text: "Terms & Conditions URL"
+            text: "Terms & Conditions URL (optional)"
           },
           id: "event-name",
           name: "event-name"
          }) }}
-      {% endif %}
       {{ govukButton({
         text: "Update",
         classes: "govuk-!-margin-right-1"
