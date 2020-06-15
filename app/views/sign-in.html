@@ -7,33 +7,68 @@
     <div class="govuk-grid-column-one-half">
       <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
       <form action="/sign-in" method="post">
-        {{ govukInput({
-        label: {
-          text: "Email address",
-          classes: "govuk-\!-font-weight-bold"
-        },
-        id: "email",
-        name: "email"
-      }) }}
-        {{ govukInput({
-        label: {
-          text: "Password",
-          classes: "govuk-\!-font-weight-bold"
+        {% if errorEmail == true or errorPassword == true %}
+          {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+        {% endif %}
+        {% if errorEmail == true %}
+          {{ govukInput({
+            label: {
+            text: "Email address"
+          },
+          id: "email",
+          type: "email",
+          name: "email",
+          autocomplete: "email",
+          errorMessage: {
+            text: "Enter your email address"
+          }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+            text: "Email address"
+          },
+          type: "email",
+          autocomplete: "email",
+          id: "email",
+          name: "email"
+          }) }}
+        {% endif %}
+        {% if errorPassword == true %}
+          {{ govukInput({
+          label: {
+          text: "Password"
         },
         id: "password",
+        name: "password",
         type: "password",
-        name: "password"
-      }) }}
+        errorMessage: {
+            text: "Enter your password"
+          }
+        }) }}
+        {% else %}
+          {{ govukInput({
+          label: {
+          text: "Password"
+        },
+        id: "password",
+        name: "password",
+        type: "password"
+        }) }}
+        {% endif %}
         {{ govukButton({
-        text: "Sign in",
-        classes: 'govuk-!-margin-bottom-2'
-      }) }}
+        text: "Sign in"
+        }) }}
+
       </form>
-      <p class="govuk-body">
-        <a href="#" class="govuk-link block govuk-body govuk-!-font-size-9">Register</a>
+      <p>
+        <a href="" class="govuk-link govuk-link--no-visited-state">Register a new account</a>
       </p>
-      <p class="govuk-body">
-        <a href="#" class="govuk-link block govuk-body govuk-!-font-size-9">Forgotten your password?</a>
+      <p>
+        <a href="" class="govuk-link govuk-link--no-visited-state">I've forgotten my password</a>
       </p>
     </div>
   </div>
