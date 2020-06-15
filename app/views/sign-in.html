@@ -1,4 +1,4 @@
-{% extends "layout-alt.html" %}
+{% extends "layout.html" %}
 {% block pageTitle %}
   Sign in to Companies House
 {% endblock %}
@@ -6,7 +6,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
       <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
-      {{ govukInput({
+      <form action="/sign-in" method="post">
+        {{ govukInput({
         label: {
           text: "Email address",
           classes: "govuk-\!-font-weight-bold"
@@ -14,7 +15,7 @@
         id: "email",
         name: "email"
       }) }}
-      {{ govukInput({
+        {{ govukInput({
         label: {
           text: "Password",
           classes: "govuk-\!-font-weight-bold"
@@ -23,11 +24,11 @@
         type: "password",
         name: "password"
       }) }}
-      {{ govukButton({
+        {{ govukButton({
         text: "Sign in",
-        href: 'manage-applications.html',
         classes: 'govuk-!-margin-bottom-2'
       }) }}
+      </form>
       <p class="govuk-body">
         <a href="#" class="govuk-link block govuk-body govuk-!-font-size-9">Register</a>
       </p>

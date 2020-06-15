@@ -249,11 +249,18 @@
       <div id="user_bar">
         <nav role="navigation" class="content">
           <ul id="navigation">
-            <li id="signed-in-user" class="user">interactiondesign@companieshouse.gov.uk
-            </li>
-            <li>
-              <a id="user-signout" href="/">Sign out</a>
-            </li>
+            {% if session.login === false %}
+              <li>
+                <a id="user-signout" href="sign-in">Sign in / Register</a>
+              </li>
+            {% endif %}
+            {% if session.login === true %}
+              <li id="signed-in-user" class="user">interactiondesign@companieshouse.gov.uk
+              </li>
+              <li>
+                <a id="user-signout" href="/">Sign out</a>
+              </li>
+            {% endif %}
             <li id="signed-in-user" class="user">
               <a href="https://forum.aws.chdev.org">Developer hub forum</a>
             </li>

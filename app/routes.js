@@ -1,6 +1,11 @@
 const express = require('express')
 const router = express.Router()
 // Add your routes here - above the module.exports line
+router.use(function (req, res, next) {
+  res.locals.session = req.session
+  next()
+})
+
 router.get('/', function (req, res) {
   var realCases = require('./data/data.js')
   req.session.cases = realCases.concat()
@@ -9,16 +14,19 @@ router.get('/', function (req, res) {
   req.session.notifications.list = []
   req.session.login = false
   res.render('index')
+  console.log(req.session.login)
 })
 router.all('*', function (req, res, next) {
   if (typeof req.session.cases === 'undefined') {
     return res.redirect('/')
   }
+  console.log(req.session.login)
   next()
 })
 router.post('/sign-in', function (req, res) {
   req.session.login = true
-  console.log('req.session.login')
+
+  res.redirect('manage-applications')
 })
 router.get('/manage-applications', function (req, res) {
   res.render('manage-applications', {
