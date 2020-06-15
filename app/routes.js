@@ -56,4 +56,9 @@ router.get('/register', function (req, res) {
   res.render('register', {
   })
 })
+
+router.get('/signout', function (req, res) {
+  req.session.login = false
+  res.redirect('index')
+})
 module.exports = router
