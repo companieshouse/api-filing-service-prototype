@@ -7,7 +7,7 @@ router.get('/', function (req, res) {
   req.session.recents = []
   req.session.notifications = {}
   req.session.notifications.list = []
-  console.log(req.session.cases)
+  req.session.login = false
   res.render('index')
 })
 router.all('*', function (req, res, next) {
@@ -15,6 +15,10 @@ router.all('*', function (req, res, next) {
     return res.redirect('/')
   }
   next()
+})
+router.post('/sign-in', function (req, res) {
+  req.session.login = true
+  console.log('req.session.login')
 })
 router.get('/manage-applications', function (req, res) {
   res.render('manage-applications', {

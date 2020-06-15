@@ -1,44 +1,45 @@
-/* global $, GOVUK, history, sessionStorage  */
+// Based on https://github.com/alphagov/govuk_publishing_components/blob/v22.0.0/app/assets/javascripts/govuk_publishing_components/components/step-by-step-nav.js
 
-// based on https://github.com/alphagov/govuk_publishing_components/blob/v9.3.6/app/assets/javascripts/govuk_publishing_components/components/step-by-step-nav.js
+/* eslint-env jquery */
 
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.support = window.GOVUK.support || {}
-
-window.GOVUK.support.history = function () {
-  return window.history && window.history.pushState && window.history.replaceState
-}
-
-window.GOVUK.getCurrentLocation = function () {
-  return window.location
-};
+window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   'use strict'
 
-  Modules.StepByStepNavigation = function () {
+  Modules.AppStepNav = function () {
     var actions = {} // stores text for JS appended elements 'show' and 'hide' on steps, and 'show/hide all' button
     var rememberShownStep = false
+    var stepNavSize
     var sessionStoreLink = 'govuk-step-nav-active-link'
     var activeLinkClass = 'app-step-nav__list-item--active'
+    var activeStepClass = 'app-step-nav__step--active'
     var activeLinkHref = '#content'
+    var uniqueId
 
     this.start = function ($element) {
-      $(window).unload(storeScrollPosition)
-
       // Indicate that js has worked
       $element.addClass('app-step-nav--active')
 
       // Prevent FOUC, remove class hiding content
       $element.removeClass('js-hidden')
 
-      rememberShownStep = !!$element.filter('[data-remember]').length
+      stepNavSize = $element.hasClass('app-step-nav--large') ? 'Big' : 'Small'
+      rememberShownStep = !!$element.filter('[data-remember]').length && stepNavSize === 'Big'
       var $steps = $element.find('.js-step')
       var $stepHeaders = $element.find('.js-toggle-panel')
       var totalSteps = $element.find('.js-panel').length
-
+      var totalLinks = $element.find('app-step-nav__link').length
       var $showOrHideAllButton
+
+      uniqueId = $element.data('id') || false
+
+      if (uniqueId) {
+        sessionStoreLink = sessionStoreLink + '_' + uniqueId
+      }
+
+      var stepNavTracker = new StepNavTracker(totalSteps, totalLinks, uniqueId)
 
       getTextForInsertedElements()
       addButtonstoSteps()
@@ -46,13 +47,12 @@ window.GOVUK.getCurrentLocation = function () {
       addShowHideToggle()
       addAriaControlsAttrForShowHideAllButton()
 
-      hideAllSteps()
-      showLinkedStep()
       ensureOnlyOneActiveLink()
+      showPreviouslyOpenedSteps()
 
-      bindToggleForSteps()
-      bindToggleShowHideAllButton()
-      bindComponentLinkClicks()
+      bindToggleForSteps(stepNavTracker)
+      bindToggleShowHideAllButton(stepNavTracker)
+      bindComponentLinkClicks(stepNavTracker)
 
       function getTextForInsertedElements () {
         actions.showText = $element.attr('data-show-text')
@@ -61,37 +61,22 @@ window.GOVUK.getCurrentLocation = function () {
         actions.hideAllText = $element.attr('data-hide-all-text')
       }
 
-      // When navigating back in browser history to the step nav, the browser will try to be "clever" and return
-      // the user to their previous scroll position. However, since we collapse all but the currently-anchored
-      // step, the content length changes and the user is returned to the wrong position (often the footer).
-      // In order to correct this behaviour, as the user leaves the page, we anticipate the correct height we wish the
-      // user to return to by forcibly scrolling them to that height, which becomes the height the browser will return
-      // them to.
-      // If we can't find an element to return them to, then reset the scroll to the top of the page. This handles
-      // the case where the user has expanded all steps, so they are not returned to a particular step, but
-      // still could have scrolled a long way down the page.
-      function storeScrollPosition () {
-        hideAllSteps()
-        var $step = getStepForAnchor()
-
-        document.body.scrollTop = $step && $step.length
-          ? $step.offset().top
-          : 0
-      }
-
       function addShowHideAllButton () {
         $element.prepend('<div class="app-step-nav__controls"><button aria-expanded="false" class="app-step-nav__button app-step-nav__button--controls js-step-controls-button">' + actions.showAllText + '</button></div>')
       }
 
       function addShowHideToggle () {
         $stepHeaders.each(function () {
-          var linkText = actions.showText
+          var linkText = actions.showText // eslint-disable-line no-unused-vars
 
           if (headerIsOpen($(this))) {
             linkText = actions.hideText
           }
+
           if (!$(this).find('.js-toggle-link').length) {
-            $(this).find('.js-step-title-button').append('<span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true">' + linkText + '</span>')
+            $(this).find('.js-step-title-button').append(
+              '<span class="app-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden></span>'
+            )
           }
         })
       }
@@ -107,42 +92,46 @@ window.GOVUK.getCurrentLocation = function () {
         $showOrHideAllButton.attr('aria-controls', ariaControlsValue)
       }
 
-      function hideAllSteps () {
-        setAllStepsShownState(false)
-      }
-
+      // called by show all/hide all, sets all steps accordingly
       function setAllStepsShownState (isShown) {
+        var data = []
+
         $.each($steps, function () {
           var stepView = new StepView($(this))
-          stepView.preventHashUpdate()
           stepView.setIsShown(isShown)
+
+          if (isShown) {
+            data.push($(this).attr('id'))
+          }
         })
-      }
 
-      function showLinkedStep () {
-        var $step
-        if (rememberShownStep) {
-          $step = getStepForAnchor()
+        if (isShown) {
+          saveToSessionStorage(uniqueId, JSON.stringify(data))
         } else {
-          $step = $steps.filter('[data-show]')
-        }
-
-        if ($step && $step.length) {
-          var stepView = new StepView($step)
-          stepView.show()
+          removeFromSessionStorage(uniqueId)
         }
       }
 
-      function getStepForAnchor () {
-        var anchor = getActiveAnchor()
+      // called on load, determines whether each step should be open or closed
+      function showPreviouslyOpenedSteps () {
+        var data = loadFromSessionStorage(uniqueId) || []
 
-        return anchor.length
-          ? $element.find('#' + escapeSelector(anchor.substr(1)))
-          : null
-      }
+        $.each($steps, function () {
+          var id = $(this).attr('id')
+          var stepView = new StepView($(this))
 
-      function getActiveAnchor () {
-        return GOVUK.getCurrentLocation().hash
+          // show the step if it has been remembered or if it has the 'data-show' attribute
+          if ((rememberShownStep && data.indexOf(id) > -1) || typeof $(this).attr('data-show') !== 'undefined') {
+            stepView.setIsShown(true)
+          } else {
+            stepView.setIsShown(false)
+          }
+        })
+
+        if (data.length > 0) {
+          $showOrHideAllButton.attr('aria-expanded', true)
+          setShowHideAllText()
+        }
       }
 
       function addButtonstoSteps () {
@@ -164,42 +153,70 @@ window.GOVUK.getCurrentLocation = function () {
         })
       }
 
-      function bindToggleForSteps () {
+      function bindToggleForSteps (stepNavTracker) {
         $element.find('.js-toggle-panel').click(function (event) {
           var $step = $(this).closest('.js-step')
 
           var stepView = new StepView($step)
           stepView.toggle()
 
+          var stepIsOptional = typeof $step.data('optional') !== 'undefined'
+          var toggleClick = new StepToggleClick(event, stepView, $steps, stepNavTracker, stepIsOptional)
+          toggleClick.track()
+
           setShowHideAllText()
+          rememberStepState($step)
         })
       }
 
+      // if the step is open, store its id in session store
+      // if the step is closed, remove its id from session store
+      function rememberStepState ($step) {
+        if (rememberShownStep) {
+          var data = JSON.parse(loadFromSessionStorage(uniqueId)) || []
+          var thisstep = $step.attr('id')
+          var shown = $step.hasClass('step-is-shown')
+
+          if (shown) {
+            data.push(thisstep)
+          } else {
+            var i = data.indexOf(thisstep)
+            if (i > -1) {
+              data.splice(i, 1)
+            }
+          }
+          saveToSessionStorage(uniqueId, JSON.stringify(data))
+        }
+      }
+
       // tracking click events on links in step content
-      function bindComponentLinkClicks () {
+      function bindComponentLinkClicks (stepNavTracker) {
         $element.find('.js-link').click(function (event) {
+          var linkClick = new componentLinkClick(event, stepNavTracker, $(this).attr('data-position')) // eslint-disable-line no-new, new-cap
+          linkClick.track()
           var thisLinkHref = $(this).attr('href')
 
           if ($(this).attr('rel') !== 'external') {
-            saveToSessionStorage(sessionStoreLink, $(this).data('position'))
+            saveToSessionStorage(sessionStoreLink, $(this).attr('data-position'))
           }
 
           if (thisLinkHref === activeLinkHref) {
             setOnlyThisLinkActive($(this))
+            setActiveStepClass()
           }
         })
       }
 
       function saveToSessionStorage (key, value) {
-        sessionStorage.setItem(key, value)
+        window.sessionStorage.setItem(key, value)
       }
 
       function loadFromSessionStorage (key) {
-        return sessionStorage.getItem(key)
+        return window.sessionStorage.getItem(key)
       }
 
       function removeFromSessionStorage (key) {
-        sessionStorage.removeItem(key)
+        window.sessionStorage.removeItem(key)
       }
 
       function setOnlyThisLinkActive (clicked) {
@@ -207,6 +224,11 @@ window.GOVUK.getCurrentLocation = function () {
         clicked.parent().addClass(activeLinkClass)
       }
 
+      // if a link occurs more than once in a step nav, the backend doesn't know which one to highlight
+      // so it gives all those links the 'active' attribute and highlights the last step containing that link
+      // if the user clicked on one of those links previously, it will be in the session store
+      // this code ensures only that link and its corresponding step have the highlighting
+      // otherwise it accepts what the backend has already passed to the component
       function ensureOnlyOneActiveLink () {
         var $activeLinks = $element.find('.js-list-item.' + activeLinkClass)
 
@@ -214,50 +236,57 @@ window.GOVUK.getCurrentLocation = function () {
           return
         }
 
-        var lastClicked = loadFromSessionStorage(sessionStoreLink)
+        var lastClicked = loadFromSessionStorage(sessionStoreLink) || $element.find('.' + activeLinkClass).first().attr('data-position')
 
-        if (lastClicked) {
-          removeActiveStateFromAllButCurrent($activeLinks, lastClicked)
-          removeFromSessionStorage(sessionStoreLink)
-        } else {
-          var activeLinkInActiveStep = $element.find('.app-step-nav__step--active').find('.' + activeLinkClass).first()
-
-          if (activeLinkInActiveStep.length) {
-            $activeLinks.removeClass(activeLinkClass)
-            activeLinkInActiveStep.addClass(activeLinkClass)
-          } else {
-            $activeLinks.slice(1).removeClass(activeLinkClass)
-          }
+        // it's possible for the saved link position value to not match any of the currently duplicate highlighted links
+        // so check this otherwise it'll take the highlighting off all of them
+        if (!$element.find('.js-link[data-position="' + lastClicked + '"]').parent().hasClass(activeLinkClass)) {
+          lastClicked = $element.find('.' + activeLinkClass).first().find('.js-link').attr('data-position')
         }
+        removeActiveStateFromAllButCurrent($activeLinks, lastClicked)
+        setActiveStepClass()
       }
 
-      function removeActiveStateFromAllButCurrent ($links, current) {
-        $links.each(function () {
-          if ($(this).find('.js-link').data('position').toString() !== current.toString()) {
+      function removeActiveStateFromAllButCurrent ($activeLinks, current) {
+        $activeLinks.each(function () {
+          if ($(this).find('.js-link').attr('data-position').toString() !== current.toString()) {
             $(this).removeClass(activeLinkClass)
+            $(this).find('.visuallyhidden').remove()
           }
         })
       }
 
-      function bindToggleShowHideAllButton () {
+      function setActiveStepClass () {
+        $element.find('.' + activeStepClass).removeClass(activeStepClass).removeAttr('data-show')
+        $element.find('.' + activeLinkClass).closest('.app-step-nav__step').addClass(activeStepClass).attr('data-show', '')
+      }
+
+      function bindToggleShowHideAllButton (stepNavTracker) {
         $showOrHideAllButton = $element.find('.js-step-controls-button')
         $showOrHideAllButton.on('click', function () {
           var shouldshowAll
 
           if ($showOrHideAllButton.text() === actions.showAllText) {
             $showOrHideAllButton.text(actions.hideAllText)
-            $element.find('.js-toggle-link').text(actions.hideText)
+            $element.find('.js-toggle-link').html(actions.hideText)
             shouldshowAll = true
+
+            stepNavTracker.track('pageElementInteraction', 'stepNavAllShown', {
+              label: actions.showAllText + ': ' + stepNavSize
+            })
           } else {
             $showOrHideAllButton.text(actions.showAllText)
-            $element.find('.js-toggle-link').text(actions.showText)
+            $element.find('.js-toggle-link').html(actions.showText)
             shouldshowAll = false
+
+            stepNavTracker.track('pageElementInteraction', 'stepNavAllHidden', {
+              label: actions.hideAllText + ': ' + stepNavSize
+            })
           }
 
           setAllStepsShownState(shouldshowAll)
           $showOrHideAllButton.attr('aria-expanded', shouldshowAll)
           setShowHideAllText()
-          setHash(null)
 
           return false
         })
@@ -272,19 +301,11 @@ window.GOVUK.getCurrentLocation = function () {
           $showOrHideAllButton.text(actions.showAllText)
         }
       }
-
-      // Ideally we'd use jQuery.escapeSelector, but this is only available from v3
-      // See https://github.com/jquery/jquery/blob/2d4f53416e5f74fa98e0c1d66b6f3c285a12f0ce/src/selector-native.js#L46
-      function escapeSelector (s) {
-        var cssMatcher = /([\x00-\x1f\x7f]|^-?\d)|^-$|[^\x80-\uFFFF\w-]/g // eslint-disable-line no-control-regex
-        return s.replace(cssMatcher, '\\$&')
-      }
     }
 
     function StepView ($stepElement) {
       var $titleLink = $stepElement.find('.js-step-title-button')
       var $stepContent = $stepElement.find('.js-panel')
-      var shouldUpdateHash = rememberShownStep
 
       this.title = $stepElement.find('.js-step-title-text').text().trim()
       this.element = $stepElement
@@ -295,7 +316,6 @@ window.GOVUK.getCurrentLocation = function () {
       this.setIsShown = setIsShown
       this.isShown = isShown
       this.isHidden = isHidden
-      this.preventHashUpdate = preventHashUpdate
       this.numberOfContentItems = numberOfContentItems
 
       function show () {
@@ -314,11 +334,7 @@ window.GOVUK.getCurrentLocation = function () {
         $stepElement.toggleClass('step-is-shown', isShown)
         $stepContent.toggleClass('js-hidden', !isShown)
         $titleLink.attr('aria-expanded', isShown)
-        $stepElement.find('.js-toggle-link').text(isShown ? actions.hideText : actions.showText)
-
-        if (shouldUpdateHash) {
-          updateHash($stepElement)
-        }
+        $stepElement.find('.js-toggle-link').html(isShown ? actions.hideText : actions.showText)
       }
 
       function isShown () {
@@ -329,29 +345,81 @@ window.GOVUK.getCurrentLocation = function () {
         return !isShown()
       }
 
-      function preventHashUpdate () {
-        shouldUpdateHash = false
-      }
-
       function numberOfContentItems () {
         return $stepContent.find('.js-link').length
       }
     }
 
-    function updateHash ($stepElement) {
-      var stepView = new StepView($stepElement)
-      var hash = stepView.isShown() && '#' + $stepElement.attr('id')
-      setHash(hash)
-    }
+    function StepToggleClick (event, stepView, $steps, stepNavTracker, stepIsOptional) {
+      this.track = trackClick
+      var $target = $(event.target)
 
-    // Sets the hash for the page. If a falsy value is provided, the hash is cleared.
-    function setHash (hash) {
-      if (!GOVUK.support.history()) {
-        return
+      function trackClick () {
+        var trackingOptions = { label: trackingLabel(), dimension28: stepView.numberOfContentItems().toString() }
+        stepNavTracker.track('pageElementInteraction', trackingAction(), trackingOptions)
       }
 
-      var newLocation = hash || GOVUK.getCurrentLocation().pathname
-      history.replaceState({}, '', newLocation)
+      function trackingLabel () {
+        return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ': ' + stepNavSize + isOptional()
+      }
+
+      // returns index of the clicked step in the overall number of steps
+      function stepIndex () { // eslint-disable-line no-unused-vars
+        return $steps.index(stepView.element) + 1
+      }
+
+      function trackingAction () {
+        return (stepView.isHidden() ? 'stepNavHidden' : 'stepNavShown')
+      }
+
+      function locateClickElement () {
+        if (clickedOnIcon()) {
+          return iconType() + ' click'
+        } else if (clickedOnHeading()) {
+          return 'Heading click'
+        } else {
+          return 'Elsewhere click'
+        }
+      }
+
+      function clickedOnIcon () {
+        return $target.hasClass('js-toggle-link')
+      }
+
+      function clickedOnHeading () {
+        return $target.hasClass('js-step-title-text')
+      }
+
+      function iconType () {
+        return (stepView.isHidden() ? 'Minus' : 'Plus')
+      }
+
+      function isOptional () {
+        return (stepIsOptional ? ' ; optional' : '')
+      }
+    }
+
+    function componentLinkClick (event, stepNavTracker, linkPosition) {
+      this.track = trackClick
+
+      function trackClick () {
+        var trackingOptions = { label: $(event.target).attr('href') + ' : ' + stepNavSize }
+        var dimension28 = $(event.target).closest('.app-step-nav__list').attr('data-length')
+
+        if (dimension28) {
+          trackingOptions['dimension28'] = dimension28
+        }
+
+        stepNavTracker.track('stepNavLinkClicked', linkPosition, trackingOptions)
+      }
+    }
+
+    // A helper that sends a custom event request to Google Analytics if
+    // the GOVUK module is setup
+    function StepNavTracker (totalSteps, totalLinks, uniqueId) {
+      this.track = function (category, action, options) {
+        // noop
+      }
     }
   }
 })(window.GOVUK.Modules)
