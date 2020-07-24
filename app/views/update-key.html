@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+  Update key
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    {% include "includes/sidebar.html" %}
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukBackLink({
+            text: "Back to application",
+            href: "manage-applications"
+          }) }}
+      <h1 class="govuk-heading-xl">
+        Update key
+      </h1>
+    </div>
+  </div>
+{% endblock %}

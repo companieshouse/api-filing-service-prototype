@@ -13,7 +13,7 @@
       <h1 class="govuk-heading-xl">
         {{ case.app }}
       </h1>
-      <h2 class="govuk-heading-l">Manage application</h2>
+      <h2 class="govuk-heading-l">Application details</h2>
       <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -26,14 +26,14 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Privacy Policy URL
+            Privacy policy URL
           </dt>
           <dd class="govuk-summary-list__value"></dd>
           <dd class="govuk-summary-list__actions"></dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Terms & Conditions URL
+            Terms and conditions URL
           </dt>
           <dd class="govuk-summary-list__value"></dd>
           <dd class="govuk-summary-list__actions"></dd>
@@ -48,7 +48,12 @@
           </dt>
           <dd class="govuk-summary-list__value">{{ case.keyname }}</dd>
           <dd class="govuk-summary-list__actions">
-            <a href="">Delete key</a>
+            <p class="govuk-body govuk-!-font-size-16">
+              <a href="update-key">Update key</a>
+            </p>
+            <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
+              <a href="delete-key">Delete key</a>
+            </p>
           </dd>
         </div>
         <div class="govuk-summary-list__row">

@@ -16,12 +16,19 @@
         id: "key-name",
         name: "key-name"
       }) }}
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        label: {
+          text: "Key description"
+        }
+      }) }}
       {{ govukRadios({
         idPrefix: "key-type",
         name: "key-type",
         fieldset: {
           legend: {
-            text: "Select API client key"
+            text: "Select the type of API client key you want to add:"
           }
         },
         items: [
@@ -39,8 +46,38 @@
           }
         ]
       }) }}
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        hint: {
+  text: "Separate each IP with a comma."
+},
+        label: {
+          text: "Restricted IPs"
+        }
+      }) }}
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        hint: {
+  text: "Separate each domain with a comma."
+},
+        label: {
+          text: "JavaScript domains"
+        }
+      }) }}
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        hint: {
+  text: "Separate each URI with a comma."
+},
+        label: {
+          text: "Redirect URIs"
+        }
+      }) }}
       {{ govukButton({
-        text: "Create",
+        text: "Add key",
         classes: "govuk-!-margin-right-1"
       }) }}
       {{ govukButton({
