@@ -20,22 +20,29 @@
         label: {
           text: "Application name"
         },
-        id: "event-name",
-        name: "event-name"
+        id: "application-name",
+        name: "application-name"
+      }) }}
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        label: {
+          text: "Description of application"
+        }
       }) }}
       {{ govukInput({
           label: {
             text: "Privacy policy URL (optional)"
           },
-          id: "event-name",
-          name: "event-name"
+          id: "privacy-policy-name",
+          name: "privacy-policy-name"
         }) }}
       {{ govukInput({
           label: {
             text: "Terms and conditions URL (optional)"
           },
-          id: "event-name",
-          name: "event-name"
+          id: "terms-cond-name",
+          name: "terms-cond-name"
          }) }}
       {{ govukButton({
         text: "Update application",
