@@ -2,6 +2,7 @@ module.exports = [
   {
     id: 0,
     app: 'My test application',
+    description: 'My test application description',
     status: 'Test',
     appcreated: '22 July 2018',
     apis: {
@@ -18,6 +19,7 @@ module.exports = [
   {
     id: 1,
     app: 'Live service',
+    description: 'Live service description',
     status: 'Live',
     appcreated: '12 January 2016',
     apis: {
@@ -34,6 +36,7 @@ module.exports = [
   {
     id: 2,
     app: 'Future testing',
+    description: 'Future testing description',
     status: 'Future',
     appcreated: '30 July 2019',
     apis: {
@@ -50,6 +53,7 @@ module.exports = [
   {
     id: 3,
     app: 'In development service',
+    description: 'In development service description',
     status: 'Test',
     appcreated: '1 August 2019',
     apis: {
