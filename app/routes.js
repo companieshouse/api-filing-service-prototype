@@ -87,6 +87,15 @@ router.get('/edit', function (req, res) {
   })
 })
 
+// Edit application 
+router.post('/edit', function (req, res) {
+  var id = parseInt(req.query.id)
+  res.render('edit', {
+    case: req.session.cases[id],
+    deleteWarning: true
+  })
+})
+
 // Register application
 router.get('/register', function (req, res) {
   res.render('register', {
