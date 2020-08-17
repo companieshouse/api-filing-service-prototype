@@ -6,6 +6,7 @@
   <div class="govuk-grid-row">
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post">
       <h1 class="govuk-heading-xl">
         New API client key
       </h1>
@@ -46,9 +47,12 @@
           }
         ]
       }) }}
+
+
+      <div class='restrictedIP'>
       {{ govukTextarea({
-        name: "more-detail",
-        id: "more-detail",
+        name: "restrictedIP-detail",
+        id: "restrictedIP-detail",
         hint: {
   text: "Separate each IP with a comma."
 },
@@ -56,9 +60,12 @@
           text: "Restricted IPs"
         }
       }) }}
+      </div>
+
+       <div class='javascriptDomain'>
       {{ govukTextarea({
-        name: "more-detail",
-        id: "more-detail",
+        name: "javascriptDomain-detail",
+        id: "javascriptDomain-detail",
         hint: {
   text: "Separate each domain with a comma."
 },
@@ -66,9 +73,12 @@
           text: "JavaScript domains"
         }
       }) }}
+        </div>
+
+       <div class='redirectURI'>        
       {{ govukTextarea({
-        name: "more-detail",
-        id: "more-detail",
+        name: "redirectURI-detail",
+        id: "redirectURI-detail",
         hint: {
   text: "Separate each URI with a comma."
 },
@@ -76,6 +86,8 @@
           text: "Redirect URIs"
         }
       }) }}
+    </div>
+    
       {{ govukButton({
         text: "Add key",
         classes: "govuk-!-margin-right-1"
@@ -85,6 +97,7 @@
         classes: "govuk-button--secondary",
         href: "manage-applications"
       }) }}
+      </form>
     </div>
   </div>
 {% endblock %}

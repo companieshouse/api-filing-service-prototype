@@ -7,6 +7,9 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
+   $(".restrictedIP").hide();
+   $(".javascriptDomain").hide();
+   $(".redirectURI").hide();
   $('.js-app-mobile-nav-toggler').click(function ($module) {
     var navActiveClass = 'app-mobile-nav--active'
     var navTogglerActiveClass = 'app-header-mobile-nav-toggler--active'
@@ -31,6 +34,7 @@ $(document).ready(function () {
       $navToggler.classList.add(navTogglerActiveClass)
     }
   })
+
   $('.js-mobile-nav-subnav-toggler').click(function (event) {
     var $toggler = event.target
     var subNavActiveClass = 'app-mobile-nav__subnav--active'
@@ -55,5 +59,27 @@ $(document).ready(function () {
       }
       event.preventDefault()
     }
+
   })
+
+$("input[name='key-type']").on('change', function () {
+
+
+  if ($(this).val() == 'rest') {
+      $(".restrictedIP").show();
+      $(".javascriptDomain").show();
+      $(".redirectURI").hide();
+  } else if ($(this).val() == 'stream'){
+      $(".restrictedIP").show();
+      $(".javascriptDomain").hide();
+      $(".redirectURI").hide();
+  } else if ($(this).val() == 'web'){
+      $(".restrictedIP").hide();
+      $(".javascriptDomain").hide();
+      $(".redirectURI").show();
+  }
+
+})
+
+
 })

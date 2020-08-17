@@ -102,6 +102,7 @@ router.get('/register', function (req, res) {
   })
 })
 
+
 // Signout
 router.get('/signout', function (req, res) {
   req.session.login = false
