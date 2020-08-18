@@ -63,8 +63,6 @@ $(document).ready(function () {
   })
 
 $("input[name='key-type']").on('change', function () {
-
-
   if ($(this).val() == 'rest') {
       $(".restrictedIP").show();
       $(".javascriptDomain").show();

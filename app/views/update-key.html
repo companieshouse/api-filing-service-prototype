@@ -13,6 +13,99 @@
       <h1 class="govuk-heading-xl">
         Update key
       </h1>
+      <form action="" method="post">
+
+        {% if errorUpdateKeyName  == true or errorUpdateKeyDescription == true %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+      {% endif %}
+
+      {% if errorUpdateKeyName  == true %}
+      {{ govukInput({
+        label: {
+          text: "Key name"
+        },
+        id: "update-key-name",
+        name: "update-key-name",
+        errorMessage: {
+            text: "Enter your key name"
+        }
+      }) }}
+      {% else %}
+      {{ govukInput({
+        label: {
+          text: "Key name"
+        },
+        id: "update-key-name",
+        name: "update-key-name"
+      }) }}
+      {% endif %}
+
+      {% if errorUpdateKeyDescriptionDetail == true %}
+      {{ govukTextarea({
+        name: "update-key-description-detail",
+        id: "update-key-description-detail",
+        label: {
+          text: "Key description"
+        },
+        errorMessage: {
+            text: "Enter your key description"
+        }
+      }) }}
+      {% else %}
+      {{ govukTextarea({
+        name: "update-key-description-detail",
+        id: "update-key-description-detail",
+        label: {
+          text: "Key description"
+        }
+      }) }}
+      {% endif %}
+
+      <p class="govuk-body">Rest API key</p>
+      <p class="govuk-body">ff78ff7b-542c-4a2c-85ba-c8ebe26ad23f</p>
+
+      {{ govukButton({
+        text: "Regenerate key",
+        classes: "govuk-button--secondary"
+      }) }}
+
+      
+      {{ govukTextarea({
+        name: "restrictedIP-detail",
+        id: "restrictedIP-detail",
+        hint: {
+  text: "Separate each IP with a comma."
+},
+        label: {
+          text: "Restricted IPs"
+        }
+      }) }}
+      
+      {{ govukTextarea({
+        name: "javascriptDomain-detail",
+        id: "javascriptDomain-detail",
+        hint: {
+  text: "Separate each domain with a comma."
+},
+        label: {
+          text: "JavaScript domains"
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Update key",
+        classes: "govuk-!-margin-right-1"
+      }) }}
+      {{ govukButton({
+        text: "Cancel",
+        classes: "govuk-button--secondary",
+        href: "manage-applications"
+      }) }}
+      
+      </form>
     </div>
   </div>
 {% endblock %}

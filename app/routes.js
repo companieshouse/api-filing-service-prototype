@@ -97,9 +97,96 @@ router.post('/edit', function (req, res) {
 })
 
 // Register application
-router.get('/register', function (req, res) {
-  res.render('register', {
-  })
+router.post('/register', function (req, res) {
+  var errors = []
+  var applicationNameHasError = false
+
+  if (req.session.data['application-name'] === '') {
+    applicationNameHasError = true
+    errors.push({
+      text: 'Enter your application name',
+      href: '#application-name-error'
+    })
+  }
+  if (applicationNameHasError) {
+    res.render('register', {
+      errorapplicationName: applicationNameHasError,
+      errorList: errors
+    })
+  }
+  else {
+    req.session.login = true
+    res.redirect('manage-applications')
+  }
+})
+
+
+
+// Add new key
+router.post('/add-new-key', function (req, res) {
+  var errors = []
+  var keyNameHasError = false
+  var keyDescriptionDetailHasError = false
+
+  if (req.session.data['key-name'] === '') {
+    keyNameHasError = true
+    errors.push({
+      text: 'Enter your key name',
+      href: '#key-name-error'
+    })
+  }
+  if (req.session.data['key-description-detail'] === '') {
+    keyDescriptionDetailHasError = true
+    errors.push({
+      text: 'Enter your key description',
+      href: '#key-description-detail-error'
+    })
+  }
+
+  if (keyNameHasError || keyDescriptionDetailHasError) {
+    res.render('add-new-key', {
+      errorKeyName: keyNameHasError,
+      errorKeyDescriptionDetail: keyDescriptionDetailHasError,
+      errorList: errors
+    })
+  } else {
+    req.session.login = true
+    res.redirect('view-application')
+  }
+})
+
+// Update key
+router.post('/update-key', function (req, res) {
+  var errors = []
+  var updateKeyNameHasError = false
+  var updateKeyDescriptionDetailHasError = false
+
+  if (req.session.data['update-key-name'] === '') {
+    updateKeyNameHasError = true
+    errors.push({
+      text: 'Enter your key name',
+      href: '#update-key-name-error'
+    })
+  }
+  if (req.session.data['update-key-description-detail'] === '') {
+    updateKeyDescriptionDetailHasError = true
+    errors.push({
+      text: 'Enter your key description',
+      href: '#update-key-description-detail-error'
+    })
+  }
+
+  if (updateKeyNameHasError || updateKeyDescriptionDetailHasError) {
+    res.render('update-key', {
+      errorUpdateKeyName: updateKeyNameHasError,
+      errorUpdateKeyDescriptionDetail: updateKeyDescriptionDetailHasError,
+      errorList: errors
+    })
+  } else {
+    req.session.login = true
+    res.redirect('manage-applications')
+  }
+ 
 })
 
 
