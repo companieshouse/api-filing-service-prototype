@@ -12,11 +12,15 @@
       </h1>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       {% if errorKeyName  == true or
         errorRestrictedIPDetail == true or
         errorJavascriptDomainDetail == true or
         errorRedirectURIDetail == true
       %}
+=======
+      {% if errorKeyName  == true or errorKeyDescription == true %}
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
 =======
       {% if errorKeyName  == true or errorKeyDescription == true %}
 >>>>>>> parent of 5de0935... Component Radio button with mandatory fields
@@ -55,6 +59,7 @@
         }
       }) }}
 <<<<<<< HEAD
+<<<<<<< HEAD
       
       
       {% if selectedChoice  == 'stream'  %}
@@ -84,6 +89,8 @@
       }) }}
       {% elseif selectedChoice  == 'web'  %}
 =======
+=======
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
       {% else %}
       {{ govukTextarea({
         name: "key-description-detail",
@@ -94,6 +101,9 @@
       }) }}
       {% endif %}
 
+<<<<<<< HEAD
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
+=======
 >>>>>>> parent of 5de0935... Component Radio button with mandatory fields
       {{ govukRadios({
         idPrefix: "key-type",

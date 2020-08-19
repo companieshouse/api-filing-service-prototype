@@ -127,10 +127,14 @@ router.post('/add-new-key', function (req, res) {
   var errors = []
   var keyNameHasError = false
 <<<<<<< HEAD
+<<<<<<< HEAD
   var restrictedIPDetailHasError = false
   var javascriptDomainDetailHasError = false
   var redirectURIDetailHasError = false
   var selectedChoice = 'rest'
+=======
+  var keyDescriptionDetailHasError = false
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
 =======
   var keyDescriptionDetailHasError = false
 >>>>>>> parent of 5de0935... Component Radio button with mandatory fields
@@ -142,6 +146,16 @@ router.post('/add-new-key', function (req, res) {
       href: '#key-name-error'
     })
   }
+<<<<<<< HEAD
+=======
+  if (req.session.data['key-description-detail'] === '') {
+    keyDescriptionDetailHasError = true
+    errors.push({
+      text: 'Enter your key description',
+      href: '#key-description-detail-error'
+    })
+  }
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
 
   if (keyNameHasError || keyDescriptionDetailHasError) {
     res.render('add-new-key', {
@@ -153,6 +167,7 @@ router.post('/add-new-key', function (req, res) {
     req.session.login = true
     res.redirect('view-application')
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   
@@ -174,6 +189,9 @@ router.post('/add-new-key', function (req, res) {
       res.redirect('view-application')
     }
   })
+=======
+})
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
 =======
 })
 >>>>>>> parent of 5de0935... Component Radio button with mandatory fields
