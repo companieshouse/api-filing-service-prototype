@@ -126,7 +126,6 @@ router.post('/register', function (req, res) {
 router.post('/add-new-key', function (req, res) {
   var errors = []
   var keyNameHasError = false
-  var keyDescriptionDetailHasError = false
   var restrictedIPDetailHasError = false
   var javascriptDomainDetailHasError = false
   var redirectURIDetailHasError = false
@@ -137,13 +136,6 @@ router.post('/add-new-key', function (req, res) {
     errors.push({
       text: 'Enter your key name',
       href: '#key-name-error'
-    })
-  }
-  if (req.session.data['key-description-detail'] === '') {
-    keyDescriptionDetailHasError = true
-    errors.push({
-      text: 'Enter your key description',
-      href: '#key-description-detail-error'
     })
   }
 
@@ -197,11 +189,10 @@ router.post('/add-new-key', function (req, res) {
 
   
 
-  if (keyNameHasError || keyDescriptionDetailHasError || keyDescriptionDetailHasError || restrictedIPDetailHasError ||
+  if (keyNameHasError || restrictedIPDetailHasError ||
   javascriptDomainDetailHasError || redirectURIDetailHasError)  {
       res.render('add-new-key', {
         errorKeyName: keyNameHasError,
-        errorKeyDescriptionDetail: keyDescriptionDetailHasError,
          
         errorRestrictedIPDetail:restrictedIPDetailHasError,
         errorJavascriptDomainDetail:javascriptDomainDetailHasError,
