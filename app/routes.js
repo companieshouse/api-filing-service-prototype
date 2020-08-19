@@ -126,10 +126,14 @@ router.post('/register', function (req, res) {
 router.post('/add-new-key', function (req, res) {
   var errors = []
   var keyNameHasError = false
+<<<<<<< HEAD
   var restrictedIPDetailHasError = false
   var javascriptDomainDetailHasError = false
   var redirectURIDetailHasError = false
   var selectedChoice = 'rest'
+=======
+  var keyDescriptionDetailHasError = false
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
 
   if (req.session.data['key-name'] === '') {
     keyNameHasError = true
@@ -139,53 +143,17 @@ router.post('/add-new-key', function (req, res) {
     })
   }
 
-  // REST API
-  if (req.session.data['key-type'] === 'rest') {
-    if(req.session.data['restrictedIP-detail'] ===''){
-      restrictedIPDetailHasError = true
-    }
-     if(req.session.data['javascriptDomain-detail'] ===''){
-      javascriptDomainDetailHasError = true
-    }
-
-    errors.push({
-      text: 'Enter your restricted IPs',
-      href: '#restrictedIP-detail-error'
+  if (keyNameHasError || keyDescriptionDetailHasError) {
+    res.render('add-new-key', {
+      errorKeyName: keyNameHasError,
+      errorKeyDescriptionDetail: keyDescriptionDetailHasError,
+      errorList: errors
     })
-    errors.push({
-      text: 'Enter your JavaScript domains',
-      href: '#javascriptDomain-detail-error'
-    })
+  } else {
+    req.session.login = true
+    res.redirect('view-application')
   }
-
-
-
-  // Stream API
-  if (req.session.data['key-type'] === 'stream') {
-    selectedChoice = 'stream'
-    if(req.session.data['restrictedIP-detail'] ===''){
-      restrictedIPDetailHasError = true
-    }
-
-    errors.push({
-      text: 'Enter your restricted IPs',
-      href: '#restrictedIP-detail-error'
-    })
-  }
-
-  // Web
-
-  if (req.session.data['key-type'] === 'web') {
-    selectedChoice = 'web'
-    if(req.session.data['redirectURI-detail'] ===''){
-      redirectURIDetailHasError = true
-    }
-
-    errors.push({
-      text: 'Enter your redirect URIs',
-      href: '#redirectURI-detail-error'
-    })
-  }
+<<<<<<< HEAD
 
   
 
@@ -206,6 +174,9 @@ router.post('/add-new-key', function (req, res) {
       res.redirect('view-application')
     }
   })
+=======
+})
+>>>>>>> parent of 5de0935... Component Radio button with mandatory fields
 
 // Update key
 router.post('/update-key', function (req, res) {

@@ -7,29 +7,9 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
-
-if ($("input[id='key-type-2']").is(":checked"))
-{
-      $(".restrictedIP").show();
-      $(".javascriptDomain").hide();
-      $(".redirectURI").hide();
-}
-else if ($("input[id='key-type-3']").is(":checked"))
-{
-      $(".restrictedIP").hide();
-      $(".javascriptDomain").hide();
-      $(".redirectURI").show();
-}
-else{
-      $(".restrictedIP").show();
-      $(".javascriptDomain").show();
-      $(".redirectURI").hide();
-}
-
-  
-
-
-
+   $(".restrictedIP").hide();
+   $(".javascriptDomain").hide();
+   $(".redirectURI").hide();
   $('.js-app-mobile-nav-toggler').click(function ($module) {
     var navActiveClass = 'app-mobile-nav--active'
     var navTogglerActiveClass = 'app-header-mobile-nav-toggler--active'
