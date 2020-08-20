@@ -89,8 +89,9 @@ router.get('/edit', function (req, res) {
 
 // Edit application 
 router.post('/edit', function (req, res) {
+
   var id = parseInt(req.query.id)
-  res.render('edit', {
+    res.render('edit', {
     case: req.session.cases[id],
     deleteWarning: true
   })
@@ -100,6 +101,7 @@ router.post('/edit', function (req, res) {
 router.post('/register', function (req, res) {
   var errors = []
   var applicationNameHasError = false
+  var applicationEnvironmentHasError = false
 
   if (req.session.data['application-name'] === '') {
     applicationNameHasError = true
@@ -108,9 +110,17 @@ router.post('/register', function (req, res) {
       href: '#application-name-error'
     })
   }
-  if (applicationNameHasError) {
+  if(typeof req.session.data['environment'] == 'undefined'){
+    applicationEnvironmentHasError = true
+    errors.push({
+      text: 'Select test or live application environment',
+      href: '#environment-error'
+    })
+  }
+  if (applicationNameHasError ||applicationEnvironmentHasError ) {
     res.render('register', {
-      errorapplicationName: applicationNameHasError,
+      errorApplicationName: applicationNameHasError,
+      errorApplicationEnvironment: applicationEnvironmentHasError,
       errorList: errors
     })
   }
@@ -126,7 +136,6 @@ router.post('/register', function (req, res) {
 router.post('/add-new-key', function (req, res) {
   var errors = []
   var keyNameHasError = false
-  var keyDescriptionDetailHasError = false
   var restrictedIPDetailHasError = false
   var javascriptDomainDetailHasError = false
   var redirectURIDetailHasError = false
@@ -137,13 +146,6 @@ router.post('/add-new-key', function (req, res) {
     errors.push({
       text: 'Enter your key name',
       href: '#key-name-error'
-    })
-  }
-  if (req.session.data['key-description-detail'] === '') {
-    keyDescriptionDetailHasError = true
-    errors.push({
-      text: 'Enter your key description',
-      href: '#key-description-detail-error'
     })
   }
 
@@ -195,13 +197,10 @@ router.post('/add-new-key', function (req, res) {
     })
   }
 
-  
-
-  if (keyNameHasError || keyDescriptionDetailHasError || keyDescriptionDetailHasError || restrictedIPDetailHasError ||
+  if (keyNameHasError || restrictedIPDetailHasError ||
   javascriptDomainDetailHasError || redirectURIDetailHasError)  {
       res.render('add-new-key', {
         errorKeyName: keyNameHasError,
-        errorKeyDescriptionDetail: keyDescriptionDetailHasError,
          
         errorRestrictedIPDetail:restrictedIPDetailHasError,
         errorJavascriptDomainDetail:javascriptDomainDetailHasError,

@@ -15,7 +15,7 @@
       </h1>
       <form action="" method="post">
 
-        {% if errorApplicationName  == true %}
+        {% if errorApplicationName  == true or errorApplicationEnvironment == true %}
             {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
@@ -69,6 +69,33 @@
         }) }}
         {% endset -%}
 
+        {% if errorApplicationEnvironment  == true %}
+        {{ govukRadios({
+          idPrefix: "environment",
+          name: "environment",
+          fieldset: {
+            legend: {
+              text: "Choose an environment for your application"
+            }
+          },
+          errorMessage: {
+            text: "Select test or live application environment"
+          },
+          items: [
+            {
+              value: "test",
+              text: "Test",
+              conditional: {
+                html: test
+              }
+            },
+            {
+              value: "live",
+              text: "Live"
+            }
+          ]
+        }) }}
+        {% else %}
         {{ govukRadios({
           idPrefix: "environment",
           name: "environment",
@@ -91,6 +118,7 @@
             }
           ]
         }) }}
+        {% endif %}
 
         {{ govukInput({
           label: {
@@ -106,6 +134,8 @@
           id: "event-name",
           name: "event-name"
         }) }}
+
+
         {{ govukButton({
           text: "Create",
           classes: "govuk-!-margin-right-1"
@@ -114,6 +144,7 @@
           text: "Cancel",
           classes: "govuk-button--secondary"
         }) }}
+
     </form>
     </div>
   </div>

@@ -17,6 +17,26 @@
       <h2 class="govuk-heading-l">
         Update application
       </h2>
+
+      {% if errorApplicationName  == true %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+      {% endif %}
+
+      {% if errorApplicationName  == true %}
+      {{ govukInput({
+        label: {
+          text: "Application name"
+        },
+        id: "application-name",
+        name: "application-name",
+        errorMessage: {
+            text: "Enter your application name"
+        }
+      }) }}
+      {% else %}
       {{ govukInput({
         label: {
           text: "Application name"
@@ -24,6 +44,8 @@
         id: "application-name",
         name: "application-name"
       }) }}
+      {% endif %}
+
       {{ govukTextarea({
         name: "more-detail",
         id: "more-detail",
@@ -33,18 +55,19 @@
       }) }}
       {{ govukInput({
           label: {
-            text: "Privacy policy URL (optional)"
-          },
-          id: "privacy-policy-name",
-          name: "privacy-policy-name"
-        }) }}
-      {{ govukInput({
-          label: {
             text: "Terms and conditions URL (optional)"
           },
           id: "terms-cond-name",
           name: "terms-cond-name"
          }) }}
+      {{ govukInput({
+          label: {
+            text: "Privacy policy URL (optional)"
+          },
+          id: "privacy-policy-name",
+          name: "privacy-policy-name"
+        }) }}
+      
       {{ govukButton({
         text: "Update application",
         classes: "govuk-!-margin-right-1"
