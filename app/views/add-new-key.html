@@ -52,32 +52,6 @@
         }
       }) }}
       
-      {% if selectedChoice  == 'stream'  %}
-      {{ govukRadios({
-        idPrefix: "key-type",
-        name: "key-type",
-        fieldset: {
-          legend: {
-            text: "Select the type of API client key you want to add:"
-          }
-        },
-        items: [
-          {
-            value: "rest",
-            text: "REST"
-          },
-          {
-            value: "stream",
-            text: "Streaming",
-            checked: true
-          },
-          {
-            value: "web",
-            text: "Web"
-          }
-        ]
-      }) }}
-      {% elseif selectedChoice  == 'web'  %}
       {{ govukRadios({
         idPrefix: "key-type",
         name: "key-type",
@@ -97,61 +71,14 @@
           },
           {
             value: "web",
-            text: "Web",
-            checked: true
+            text: "Web"
           }
         ]
       }) }}
-      {% else %}
-       {{ govukRadios({
-        idPrefix: "key-type",
-        name: "key-type",
-        fieldset: {
-          legend: {
-            text: "Select the type of API client key you want to add:"
-          }
-        },
-        items: [
-          {
-            value: "rest",
-            text: "REST",
-            checked: true
-          },
-          {
-            value: "stream",
-            text: "Streaming",
-            id: "key-type-2"
-          },
-          {
-            value: "web",
-            text: "Web",
-            id: "key-type-3"
-          }
-        ]
-      }) }}
-
-
-      {% endif %}
-
-
 
 
       <div class='restrictedIP'>
-        {% if errorRestrictedIPDetail  == true %}
-        {{ govukTextarea({
-          name: "restrictedIP-detail",
-          id: "restrictedIP-detail",
-          hint: {
-            text: "Separate each IP with a comma."
-          },
-          label: {
-            text: "Restricted IPs"
-          },
-          errorMessage: {
-            text: "Enter your restricted IPs"
-        }
-        }) }}
-        {% else %}
+        
         {{ govukTextarea({
           name: "restrictedIP-detail",
           id: "restrictedIP-detail",
@@ -162,26 +89,12 @@
             text: "Restricted IPs"
           }
         }) }}
-        {% endif %}
+
       </div>
 
 
        <div class='javascriptDomain'>
-        {% if errorJavascriptDomainDetail  == true %}
-        {{ govukTextarea({
-          name: "javascriptDomain-detail",
-          id: "javascriptDomain-detail",
-          hint: {
-            text: "Separate each domain with a comma."
-          },
-          label: {
-            text: "JavaScript domains"
-          },
-          errorMessage: {
-            text: "Enter your JavaScript Domains"
-          }
-        }) }}
-        {% else %}
+        
         {{ govukTextarea({
           name: "javascriptDomain-detail",
           id: "javascriptDomain-detail",
@@ -192,26 +105,11 @@
             text: "JavaScript domains"
           }
         }) }}
-        {% endif %}
+
         </div>
 
 
        <div class='redirectURI'>
-        {% if errorRedirectURIDetail  == true %}
-        {{ govukTextarea({
-          name: "redirectURI-detail",
-          id: "redirectURI-detail",
-          hint: {
-            text: "Separate each URI with a comma."
-          },
-          label: {
-            text: "Redirect URIs"
-          },
-          errorMessage: {
-            text: "Enter your redirect URIs"
-          }
-        }) }}
-        {% else %}
         {{ govukTextarea({
           name: "redirectURI-detail",
           id: "redirectURI-detail",
@@ -222,7 +120,6 @@
             text: "Redirect URIs"
           }
         }) }}
-        {% endif %}
     </div>
 
       {{ govukButton({

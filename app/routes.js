@@ -136,10 +136,6 @@ router.post('/register', function (req, res) {
 router.post('/add-new-key', function (req, res) {
   var errors = []
   var keyNameHasError = false
-  var restrictedIPDetailHasError = false
-  var javascriptDomainDetailHasError = false
-  var redirectURIDetailHasError = false
-  var selectedChoice = 'rest'
 
   if (req.session.data['key-name'] === '') {
     keyNameHasError = true
@@ -149,65 +145,11 @@ router.post('/add-new-key', function (req, res) {
     })
   }
 
-  // REST API
-  if (req.session.data['key-type'] === 'rest') {
-    if(req.session.data['restrictedIP-detail'] ===''){
-      restrictedIPDetailHasError = true
-    }
-     if(req.session.data['javascriptDomain-detail'] ===''){
-      javascriptDomainDetailHasError = true
-    }
-
-    errors.push({
-      text: 'Enter your restricted IPs',
-      href: '#restrictedIP-detail-error'
-    })
-    errors.push({
-      text: 'Enter your JavaScript domains',
-      href: '#javascriptDomain-detail-error'
-    })
-  }
-
-
-
-  // Stream API
-  if (req.session.data['key-type'] === 'stream') {
-    selectedChoice = 'stream'
-    if(req.session.data['restrictedIP-detail'] ===''){
-      restrictedIPDetailHasError = true
-    }
-
-    errors.push({
-      text: 'Enter your restricted IPs',
-      href: '#restrictedIP-detail-error'
-    })
-  }
-
-  // Web
-
-  if (req.session.data['key-type'] === 'web') {
-    selectedChoice = 'web'
-    if(req.session.data['redirectURI-detail'] ===''){
-      redirectURIDetailHasError = true
-    }
-
-    errors.push({
-      text: 'Enter your redirect URIs',
-      href: '#redirectURI-detail-error'
-    })
-  }
-
-  if (keyNameHasError || restrictedIPDetailHasError ||
-  javascriptDomainDetailHasError || redirectURIDetailHasError)  {
+  
+  if (keyNameHasError)  {
       res.render('add-new-key', {
         errorKeyName: keyNameHasError,
-         
-        errorRestrictedIPDetail:restrictedIPDetailHasError,
-        errorJavascriptDomainDetail:javascriptDomainDetailHasError,
-        errorRedirectURIDetail:redirectURIDetailHasError,
-
-        errorList: errors,
-        selectedChoice: selectedChoice
+        errorList: errors
       })
     } else {
       req.session.login = true
