@@ -78,7 +78,13 @@
       </dl>
       {{ govukButton({
         text: "Delete key",
-        classes: "govuk-button--warning"
+        classes: "govuk-button--warning",
+        href:"view-application-notification"
+      }) }}
+      {{ govukButton({
+        text: "Cancel",
+        classes: "govuk-button--secondary",
+        href: "view-application?id={{ case.id }}"
       }) }}
     </div>
   </div>

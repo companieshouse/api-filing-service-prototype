@@ -249,6 +249,16 @@ router.post('/update-key', function (req, res) {
  
 })
 
+// Delete key 
+router.post('/delete-key', function (req, res) {
+
+  var id = parseInt(req.query.id)
+    res.render('delete-key', {
+    case: req.session.cases[id],
+
+  })
+})
+
 
 // Signout
 router.get('/signout', function (req, res) {
