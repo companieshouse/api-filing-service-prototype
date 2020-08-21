@@ -161,7 +161,6 @@ router.post('/add-new-key', function (req, res) {
 router.post('/update-key', function (req, res) {
   var errors = []
   var updateKeyNameHasError = false
-  var updateKeyDescriptionDetailHasError = false
 
   if (req.session.data['update-key-name'] === '') {
     updateKeyNameHasError = true
@@ -170,18 +169,10 @@ router.post('/update-key', function (req, res) {
       href: '#update-key-name-error'
     })
   }
-  if (req.session.data['update-key-description-detail'] === '') {
-    updateKeyDescriptionDetailHasError = true
-    errors.push({
-      text: 'Enter your key description',
-      href: '#update-key-description-detail-error'
-    })
-  }
-
+  
   if (updateKeyNameHasError || updateKeyDescriptionDetailHasError) {
     res.render('update-key', {
       errorUpdateKeyName: updateKeyNameHasError,
-      errorUpdateKeyDescriptionDetail: updateKeyDescriptionDetailHasError,
       errorList: errors
     })
   } else {
