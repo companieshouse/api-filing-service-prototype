@@ -136,6 +136,7 @@ router.post('/register', function (req, res) {
 router.post('/add-new-key', function (req, res) {
   var errors = []
   var keyNameHasError = false
+  var APIkeyTypeHasError = false
 
   if (req.session.data['key-name'] === '') {
     keyNameHasError = true
@@ -144,11 +145,19 @@ router.post('/add-new-key', function (req, res) {
       href: '#key-name-error'
     })
   }
+  if(typeof req.session.data['key-type'] == 'undefined'){
+    APIkeyTypeHasError = true
+    errors.push({
+      text: 'Select the type of API client key you want to add',
+      href: '#APIkey-type-error'
+    })
+  }
 
   
   if (keyNameHasError)  {
       res.render('add-new-key', {
         errorKeyName: keyNameHasError,
+        errorAPIKeyType: APIkeyTypeHasError,
         errorList: errors
       })
     } else {

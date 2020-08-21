@@ -52,6 +52,34 @@
         }
       }) }}
       
+      {% if errorAPIKeyType  == true %}
+      {{ govukRadios({
+        idPrefix: "key-type",
+        name: "key-type",
+        fieldset: {
+          legend: {
+            text: "Select the type of API client key you want to add:"
+          }
+        },
+        errorMessage: {
+            text: "Select the type of API client key you want to add"
+          },
+        items: [
+          {
+            value: "rest",
+            text: "REST"
+          },
+          {
+            value: "stream",
+            text: "Streaming"
+          },
+          {
+            value: "web",
+            text: "Web"
+          }
+        ]
+      }) }}
+      {% else %}
       {{ govukRadios({
         idPrefix: "key-type",
         name: "key-type",
@@ -75,6 +103,7 @@
           }
         ]
       }) }}
+      {% endif %}
 
 
       <div class='restrictedIP'>
