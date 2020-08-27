@@ -64,6 +64,13 @@ router.get('/manage-applications', function (req, res) {
   })
 })
 
+// Manage applications
+router.get('/manage-applications-delete-app-notification', function (req, res) {
+  res.render('manage-applications-delete-app-notification', {
+    cases: req.session.cases
+  })
+})
+
 // View single application
 router.get('/view-application', function (req, res) {
   var id = parseInt(req.query.id)
