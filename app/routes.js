@@ -64,12 +64,20 @@ router.get('/manage-applications', function (req, res) {
   })
 })
 
-// Manage applications
+// Manage applications with delete application notification
 router.get('/manage-applications-delete-app-notification', function (req, res) {
   res.render('manage-applications-delete-app-notification', {
     cases: req.session.cases
   })
 })
+
+// view applications with update key notification
+router.get('/view-applications-update-key-notification', function (req, res) {
+  res.render('view-applications-update-key-notification', {
+    cases: req.session.cases
+  })
+})
+
 
 // View single application
 router.get('/view-application', function (req, res) {
@@ -186,14 +194,14 @@ router.post('/update-key', function (req, res) {
     })
   }
   
-  if (updateKeyNameHasError || updateKeyDescriptionDetailHasError) {
+  if (updateKeyNameHasError) {
     res.render('update-key', {
       errorUpdateKeyName: updateKeyNameHasError,
       errorList: errors
     })
   } else {
     req.session.login = true
-    res.redirect('manage-applications')
+    res.redirect('view-applications-update-key-notification')
   }
  
 })
