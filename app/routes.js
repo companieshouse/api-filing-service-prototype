@@ -128,7 +128,7 @@ router.post('/register', function (req, res) {
   if(typeof req.session.data['environment'] == 'undefined'){
     applicationEnvironmentHasError = true
     errors.push({
-      text: 'Select test or live application environment',
+      text: 'Select an environment for your application',
       href: '#environment-error'
     })
   }
