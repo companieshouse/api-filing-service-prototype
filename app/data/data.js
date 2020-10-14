@@ -14,7 +14,8 @@ module.exports = [
     },
     ip: '194.75.36.81',
     javascript: '',
-    keyname: 'REST API Key for testing'
+    keyname: 'REST API Key for testing',
+    keydescription: "REST API key description"
   },
   {
     id: 1,
