@@ -5,18 +5,40 @@ module.exports = [
     description: 'My test application description',
     status: 'Test',
     appcreated: '22 July 2018',
+    keys: [{keyname: 'REST API Key for testing',
+            keydescription: "REST API key description", 
+            type:'Rest',  
+            key: 'ff78ff7b-542c-4a2c-85ba-c8ebe26ad23f',
+            registered:'11 March 2020 - 10:56:14', 
+            restrictedips:'194.75.36.81', 
+            jsdomains:''},
+           {keyname: 'Stream API Key for testing',
+            keydescription: "Stream API key description", 
+            type:'Stream',  
+            key: 'ff78ff7b-542c-4a2c-85ba-c8ebe26ad23f',
+            registered:'11 March 2020 - 10:56:14', 
+            restrictedips:'194.75.36.81'},
+           {keyname: 'Web API Key for testing',
+            keydescription: "Web API key description", 
+            type:'Web',  
+            registered:'11 March 2020 - 10:56:14', 
+            redirecturis:'https://app.domain./oauth/callback', 
+            clientid:'ff78ff7b-542c-4a2c-85ba-c8ebe26ad23f',
+            clientsecret:'ebc03087-d265-11e7-b8c6-83e29cd24f4c'}],
     apis: {
       type: 'Rest API key',
       created: '30 July 2019',
-      test: 'ff78ff7b-542c-4a2c-85ba-c8ebe26ad23f',
-      live: '441d00a6-4d8d-48d2-bd24-c33a856111d9',
-      future: '19adffb4-ebc0-4134-9f85-40f48068f122'
+      key: 'ff78ff7b-542c-4a2c-85ba-c8ebe26ad23f',
     },
     ip: '194.75.36.81',
     javascript: '',
     keyname: 'REST API Key for testing',
-    keydescription: "REST API key description"
+    keydescription: "REST API key description",
+    registered:"11 March 2020 - 10:56:14"
   },
+
+
+
   {
     id: 1,
     app: 'Live service',
@@ -24,11 +46,9 @@ module.exports = [
     status: 'Live',
     appcreated: '12 January 2016',
     apis: {
-      type: 'Rest API key',
+      type: 'Streaming API key',
       created: '30 July 2019',
-      test: '2efb02c5-ad72-46fd-b97c-1374d394b5af',
-      live: '583cbc2c-920c-4cb2-8f38-3fdd6721e3ce',
-      future: '2ab8fe3f-680b-4ea3-b707-4d8978e5d62d'
+      key: '2efb02c5-ad72-46fd-b97c-1374d394b5af',
     },
     ip: '194.75.36.81',
     javascript: '',
@@ -43,9 +63,7 @@ module.exports = [
     apis: {
       type: 'Rest API key',
       created: '30 July 2019',
-      test: '7b20b648-5059-41b8-ab8f-0c4d48d83592',
-      live: '1e5e7cd8-b233-43a2-8ea2-f94ccecf29cd',
-      future: '3cf128f7-6a3d-4e94-b68b-9428bd6cc23a'
+      key: '3cf128f7-6a3d-4e94-b68b-9428bd6cc23a'
     },
     ip: '194.75.36.81',
     javascript: '',
@@ -58,7 +76,7 @@ module.exports = [
     status: 'Test',
     appcreated: '1 August 2019',
     apis: {
-      type: 'Rest API key',
+      type: 'Web',
       created: '30 July 2019',
       test: '70553427-1842-470c-a82a-f10f49bd54c6',
       live: 'a3e57798-afdc-408d-8bc6-4bfc17825944',

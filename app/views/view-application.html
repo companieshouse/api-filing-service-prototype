@@ -41,406 +41,227 @@
         </div>
       </dl>
       <a href="edit?id={{ case.id }}" class="govuk-button govuk-button--secondary" role="button" draggable="false">Manage application</a>
+      
+
       <h2 class="govuk-heading-l">Keys for this application</h2>
-
-
-      <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key name
-          </dt>
-          <dd class="govuk-summary-list__value">{{ case.keyname }}</dd>
-          <dd class="govuk-summary-list__actions">
-            <p class="govuk-body govuk-!-font-size-16">
-              <a href="update-key">Update key</a>
-            </p>
-            <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
-              <a href="delete-key">Delete key</a>
-            </p>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key description
-          </dt>
-          <dd class="govuk-summary-list__value">{{ case.keydescription}}</dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key type
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ case.apis.type }}
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        {% if case.status === 'Test' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              API key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>
-                {{ case.apis.test }}</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-        {% if case.status === 'Live' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Live API key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>{{ case.apis.live }}</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
-        {% if case.status === 'Future' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Future API key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>{{ case.apis.future }}</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Restricted IPs
-          </dt>
-          <dd class="govuk-summary-list__value">
-            194.75.36.81
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            JavaScript domains
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <!-- hiding the redirect 
-
-         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Redirect URIs
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-         </div>
-       -->
-       <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Registered on
-          </dt>
-          <dd class="govuk-summary-list__value">
-            11 March 2020 - 10:56:14
-          </dd>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-         </div>
-      </dl>
-
-
-
-
-      <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key name
-          </dt>
-          <dd class="govuk-summary-list__value">Streaming key 1</dd>
-          <dd class="govuk-summary-list__actions">
-            <p class="govuk-body govuk-!-font-size-16">
-              <a href="update-key">Update key</a>
-            </p>
-            <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
-              <a href="delete-key">Delete key</a>
-            </p>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key description
-          </dt>
-          <dd class="govuk-summary-list__value">Streaming API description</dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key type
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Streaming API key
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        {% if case.status === 'Test' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Stream key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>
-                ace03087-d265-11e7-b8c6-83e29cd24f4c</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-        {% if case.status === 'Live' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Live API key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>{{ case.apis.live }}</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
-        {% if case.status === 'Future' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Future API key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>{{ case.apis.future }}</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Restricted IPs
-          </dt>
-          <dd class="govuk-summary-list__value">
-            192.168.0.1
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        <!-- hiding the redirect 
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            JavaScript domains
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
+    
+       {% for key in case.keys %}
         
+          <!--
+          Key name
+          --->
 
-         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Redirect URIs
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-         </div>
-       -->
-       <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Registered on
-          </dt>
-          <dd class="govuk-summary-list__value">
-            11 March 2020 - 10:56:14
-          </dd>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-         </div>
-      </dl>
+          <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Key name
+              </dt>
+              <dd class="govuk-summary-list__value">{{ key.keyname }}</dd>
+              <dd class="govuk-summary-list__actions">
+                <p class="govuk-body govuk-!-font-size-16">
+                  <a href="update-key">Update key</a>
+                </p>
+                <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
+                  <a href="delete-key">Delete key</a>
+                </p>
+              </dd>
+            </div>
 
-      <dl class="govuk-summary-list govuk-body govuk-!-font-size-16">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key name
-          </dt>
-          <dd class="govuk-summary-list__value">Web key 1</dd>
-          <dd class="govuk-summary-list__actions">
-            <p class="govuk-body govuk-!-font-size-16">
-              <a href="update-key">Update key</a>
-            </p>
-            <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
-              <a href="delete-key">Delete key</a>
-            </p>
-          </dd>
-        </div>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
+            <!--
             Key description
-          </dt>
-          <dd class="govuk-summary-list__value">Web API description</dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
+            --->
 
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Key description
+              </dt>
+              <dd class="govuk-summary-list__value">{{ key.keydescription}}</dd>
+              <dd class="govuk-summary-list__actions"></dd>
+            </div>
 
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Key type
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Web
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        {% if case.status === 'Test' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Client ID
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>
-                ace03087-d265-11e7-b8c6-83e29cd24f4c</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Client secret
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>
-                ebc03087-d265-11e7-b8c6-83e29cd24f4c</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-            <p class="govuk-body govuk-!-font-size-16">
-              <a href="update-key">Show</a>
-            </p>
-            <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
-              <a href="delete-key">Copy</a>
-            </p>
+           
+                <!--
+                Key type Rest
+                --->
 
-          </dd>
-          </div>
-        {% endif %}
-        {% if case.status === 'Live' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Live API key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>{{ case.apis.live }}</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
+                {% if(key.type == 'Rest') %}
 
-        {% if case.status === 'Future' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Future API key
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <span class='api-value'>{{ case.apis.future }}</span>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Copy<span class="govuk-visually-hidden">
-                  key</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-        
-        <!----
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Restricted IPs
-          </dt>
-          <dd class="govuk-summary-list__value">
-            192.168.0.1
-          </dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            JavaScript domains
-          </dt>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-        </div>
-        --->
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Key type
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Rest API key
+                  </dd>
+                  <dd class="govuk-summary-list__actions"></dd>
+                </div>
 
-         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Redirect URIs
-          </dt>
-          <dd class="govuk-summary-list__value">
-            https://app.domain/oauth/callback
-          </dd>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-         </div>
-         <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Registered on
-          </dt>
-          <dd class="govuk-summary-list__value">
-            11 March 2020 - 10:56:14
-          </dd>
-          <dd class="govuk-summary-list__value"></dd>
-          <dd class="govuk-summary-list__actions"></dd>
-         </div>
-      </dl>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    API key
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <span class='api-value'>{{ key.key }}</span>
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                      Copy<span class="govuk-visually-hidden">
+                        key</span>
+                    </a>
+                  </dd>
+                </div>
 
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Restricted IPs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{key.restrictedips}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions"></dd>
+                </div>
 
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    JavaScript domains
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{key.jsdomains}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions"></dd>
+                </div>
 
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Registered on
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{key.registered}}
+                    </dd>
+                    <dd class="govuk-summary-list__value"></dd>
+                    <dd class="govuk-summary-list__actions"></dd>
+                   </div>
+                </dl>
 
+                <!--
+                Key type Stream
+                --->
 
+                {% elseif(key.type == 'Stream') %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Key type
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Stream API key
+                  </dd>
+                  <dd class="govuk-summary-list__actions"></dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Stream key
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <span class='api-value'>{{ key.key }}</span>
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                      Copy<span class="govuk-visually-hidden">
+                        key</span>
+                    </a>
+                  </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Restricted IPs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{key.restrictedips}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions"></dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Registered on
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{key.registered}}
+                    </dd>
+                    <dd class="govuk-summary-list__value"></dd>
+                    <dd class="govuk-summary-list__actions"></dd>
+                   </div>
+                </dl>
+
+                <!--
+                Key type Web
+                --->
+
+                {% elseif(key.type == 'Web') %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Key type
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Web
+                  </dd>
+                  <dd class="govuk-summary-list__actions"></dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Client ID
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <span class='api-value'>{{key.clientid}}</span>
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                      <a href="update-key">Copy</a>
+                  </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Client Secret
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <span class='api-value'>{{key.clientsecret}}</span>
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    
+                    <p class="govuk-body govuk-!-font-size-16">
+                      <a href="update-key">Show</a>
+                    </p>
+                    <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
+                      <a href="delete-key">Copy</a>
+                    </p>
+                  </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Redirect URIs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{key.redirecturis}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions"></dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Registered on
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{key.registered}}
+                    </dd>
+                    <dd class="govuk-summary-list__value"></dd>
+                    <dd class="govuk-summary-list__actions"></dd>
+                   </div>
+                </dl>
+                {% endif %}
+          {% endfor %}
 
 
       <div class="govuk-!-margin-top-6">
