@@ -3,6 +3,23 @@
   View application
 {% endblock %}
 {% block content %}
+<script>
+function myFunction() {
+  var x = document.getElementById("showhide");
+  var y = document.getElementById("showbutton");
+  var z = document.getElementById("stars");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    showbutton.text = "Hide"
+    z.style.display = "none";
+  } else {
+    x.style.display = "none";
+    showbutton.text = "Show"
+    z.style.display = "block";
+  }
+}
+</script>
+
   <div class="govuk-grid-row">
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
@@ -225,19 +242,36 @@
                   <dt class="govuk-summary-list__key">
                     Client Secret
                   </dt>
+
+                  <!----
+                      Show and hide feature for client secret 
+                      --->
+
                   <dd class="govuk-summary-list__value">
-                    <span class='api-value'>{{key.clientsecret}}</span>
+                    <span class='api-value'>
+                       <div id="stars">
+                        <span>********************************* </span>
+                      </div>
+                      <div style="display:none" id="showhide">
+                        {{key.clientsecret}}
+                      </div>
+                    </span>
                   </dd>
                   <dd class="govuk-summary-list__actions">
                     
                     <p class="govuk-body govuk-!-font-size-16">
-                      <a href="update-key">Show</a>
+                      <a id="showbutton" href="JavaScript:myFunction()">Show</a>
                     </p>
+
                     <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">
                       <a href="delete-key">Copy</a>
                     </p>
                   </dd>
                 </div>
+
+
+
+
 
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
@@ -270,3 +304,5 @@
     </div>
   </div>
 {% endblock %}
+
+
