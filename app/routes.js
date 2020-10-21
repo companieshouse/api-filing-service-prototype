@@ -167,7 +167,19 @@ router.post('/add-new-key', function (req, res) {
   }
   else {
     req.session.login = true
-    res.redirect('add-rest-key')
+
+    if(req.session.data['key-type'] == "rest"){
+
+      res.redirect('add-rest-key')
+    }
+    else if(req.session.data['key-type'] == "stream"){
+
+      res.redirect('add-stream-key')
+    }
+    else if(req.session.data['key-type'] == "web"){
+
+      res.redirect('add-web-key')
+    }
   }
 })
   
