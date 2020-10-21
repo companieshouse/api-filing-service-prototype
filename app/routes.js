@@ -150,8 +150,35 @@ router.post('/register', function (req, res) {
 // Add new key
 router.post('/add-new-key', function (req, res) {
   var errors = []
+  var errorAPIKeyTypeHasError = false
+
+  if(typeof req.session.data['key-type'] == 'undefined'){
+    errorAPIKeyTypeHasError = true
+    errors.push({
+      text: 'Select the type of API client key you want to add',
+      href: '#api-key-type-error'
+    })
+  }
+  if (errorAPIKeyTypeHasError) {
+    res.render('add-new-key', {
+      errorAPIKeyType: errorAPIKeyTypeHasError,
+      errorList: errors
+    })
+  }
+  else {
+    req.session.login = true
+    res.redirect('add-rest-key')
+  }
+})
+  
+
+
+
+// Add REST key
+router.post('/add-rest-key', function (req, res) {
+  var errors = []
   var keyNameHasError = false
-  var APIkeyTypeHasError = false
+  var keyDescriptionHasError = false
 
   if (req.session.data['key-name'] === '') {
     keyNameHasError = true
@@ -160,24 +187,22 @@ router.post('/add-new-key', function (req, res) {
       href: '#key-name-error'
     })
   }
-  if(typeof req.session.data['key-type'] == 'undefined'){
-    APIkeyTypeHasError = true
+  if (req.session.data['key-description-detail'] === '') {
+    keyDescriptionHasError = true
     errors.push({
-      text: 'Select the type of API client key you want to add',
-      href: '#APIkey-type-error'
+      text: 'Enter your key description',
+      href: '#key-name-error'
     })
   }
-
-  
-  if (keyNameHasError)  {
-      res.render('add-new-key', {
+  if (keyNameHasError | keyDescriptionHasError)  {
+      res.render('add-rest-key', {
         errorKeyName: keyNameHasError,
-        errorAPIKeyType: APIkeyTypeHasError,
+        errorKeyDescription: keyDescriptionHasError,
         errorList: errors
       })
     } else {
       req.session.login = true
-      res.redirect('add-rest-key')
+      res.redirect('view-application')
     }
   })
 

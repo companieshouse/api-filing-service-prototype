@@ -7,8 +7,45 @@
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
       <form action="" method="post">
+
+      {% if errorAPIKeyType == true %}
+        {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+        }) }}
+
+      {% endif %}
   
-   
+      {% if errorAPIKeyType  == true %}
+      {{ govukRadios({
+        idPrefix: "key-type",
+        name: "key-type",
+        fieldset: {
+          legend: {
+            text: "What type of API client key do you want to add?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        errorMessage: {
+            text: "Select the type of API client key you want to add"
+        },
+        items: [
+          {
+            value: "rest",
+            text: "REST"
+          },
+          {
+            value: "stream",
+            text: "Streaming"
+          },
+          {
+            value: "web",
+            text: "Web"
+          }
+        ]
+      }) }}
+      {% else %}
       {{ govukRadios({
         idPrefix: "key-type",
         name: "key-type",
@@ -34,6 +71,8 @@
           }
         ]
       }) }}
+      {% endif %}
+
 
       {{ govukButton({
         text: "Continue",
@@ -41,8 +80,7 @@
       }) }}
       {{ govukButton({
         text: "Cancel",
-        classes: "govuk-button--secondary",
-        href: "add-rest-key"
+        classes: "govuk-button--secondary"
       }) }}
       </form>
     </div>
