@@ -1,34 +1,34 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Update key
+  Register application
 {% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
     {% include "includes/sidebar.html" %}
     <div class="govuk-grid-column-two-thirds">
-      {{ govukBackLink({
-            text: "Back to application",
-            href: "manage-applications"
-          }) }}
-      <h1 class="govuk-heading-xl">
-        Update key
-      </h1>
       <form action="" method="post">
+      <h1 class="govuk-heading-xl">
+        New Stream API client key
+      </h1>
 
-        {% if errorUpdateKeyName  == true %}
+      {% if errorKeyName  == true or
+        errorRestrictedIPDetail == true or
+        errorJavascriptDomainDetail == true or
+        errorRedirectURIDetail == true
+      %}
             {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
             }) }}
       {% endif %}
 
-      {% if errorUpdateKeyName  == true %}
+      {% if errorKeyName  == true %}
       {{ govukInput({
         label: {
           text: "Key name"
         },
-        id: "update-key-name",
-        name: "update-key-name",
+        id: "key-name",
+        name: "key-name",
         errorMessage: {
             text: "Enter your key name"
         }
@@ -38,44 +38,34 @@
         label: {
           text: "Key name"
         },
-        id: "update-key-name",
-        name: "update-key-name"
+        id: "key-name",
+        name: "key-name"
       }) }}
       {% endif %}
 
+      
       {{ govukTextarea({
-        name: "update-key-description-detail",
-        id: "update-key-description-detail",
+        name: "key-description-detail",
+        id: "key-description-detail",
         label: {
           text: "Key description"
         }
       }) }}
 
-      
       {{ govukTextarea({
-        name: "restrictedIP-detail",
-        id: "restrictedIP-detail",
-        hint: {
-  text: "Separate each IP with a comma."
-},
-        label: {
-          text: "Restricted IPs"
-        }
-      }) }}
-      
-      {{ govukTextarea({
-        name: "javascriptDomain-detail",
-        id: "javascriptDomain-detail",
-        hint: {
-  text: "Separate each domain with a comma."
-},
-        label: {
-          text: "JavaScript domains"
-        }
-      }) }}
+          name: "restrictedIP-detail",
+          id: "restrictedIP-detail",
+          hint: {
+            text: "Separate each IP with a comma."
+          },
+          label: {
+            text: "Restricted IPs"
+          }
+        }) }}
+
 
       {{ govukButton({
-        text: "Update key",
+        text: "Add key",
         classes: "govuk-!-margin-right-1"
       }) }}
       {{ govukButton({
@@ -83,8 +73,8 @@
         classes: "govuk-button--secondary",
         href: "manage-applications"
       }) }}
-      
       </form>
     </div>
+
   </div>
 {% endblock %}
