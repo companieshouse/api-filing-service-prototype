@@ -177,7 +177,7 @@ router.post('/add-new-key', function (req, res) {
       })
     } else {
       req.session.login = true
-      res.redirect('view-application')
+      res.redirect('add-rest-key')
     }
   })
 
