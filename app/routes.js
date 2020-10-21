@@ -206,6 +206,41 @@ router.post('/add-rest-key', function (req, res) {
     }
   })
 
+
+// Add Stream key
+router.post('/add-stream-key', function (req, res) {
+  var errors = []
+  var keyNameHasError = false
+  var keyDescriptionHasError = false
+
+  if (req.session.data['key-name'] === '') {
+    keyNameHasError = true
+    errors.push({
+      text: 'Enter your key name',
+      href: '#key-name-error'
+    })
+  }
+  if (req.session.data['key-description-detail'] === '') {
+    keyDescriptionHasError = true
+    errors.push({
+      text: 'Enter your key description',
+      href: '#key-name-error'
+    })
+  }
+  if (keyNameHasError | keyDescriptionHasError)  {
+      res.render('add-stream-key', {
+        errorKeyName: keyNameHasError,
+        errorKeyDescription: keyDescriptionHasError,
+        errorList: errors
+      })
+    } else {
+      req.session.login = true
+      res.redirect('view-application')
+    }
+  })
+
+
+
 // Update key
 router.post('/update-key', function (req, res) {
   var errors = []
